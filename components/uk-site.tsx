@@ -667,6 +667,14 @@ export function CompanyPanel() {
             <div key={x}>{x}</div>
           ))}
         </address>
+        {[
+          [en ? 'Central email' : 'Központi e-mail', c.centralEmail],
+          [en ? 'Depot/Warehouse' : 'Depo/Raktár', c.depotEmail],
+        ].map(([label, email]) => email && (
+          <a className="block mt-6 text-blue-200" href={`mailto:${email}`} key={email}>
+            {label}: {email}
+          </a>
+        ))}
         {c.email && (
           <a className="block mt-6 text-blue-200" href={`mailto:${c.email}`}>
             {c.email}

@@ -12,6 +12,8 @@ export type MarketConfig = {
     companyName?: string;
     director?: string;
     salesEmail?: string;
+    centralEmail?: string;
+    depotEmail?: string;
     emergencyPhone?: string;
     address: string[];
     email: string | null;

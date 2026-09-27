@@ -180,6 +180,15 @@ export function Footer() {
               {market.company.address.join(', ')}
             </span>
           </p>
+          {[
+            [locale === 'hu' ? 'Központi e-mail' : 'Central email', market.company.centralEmail],
+            [locale === 'hu' ? 'Depo/Raktár' : 'Depot/Warehouse', market.company.depotEmail],
+          ].map(([label, email]) => email && (
+            <p className="footer-line" key={email}>
+              <Mail size={15} />
+              <span>{label}: <a href={`mailto:${email}`}>{email}</a></span>
+            </p>
+          ))}
           {market.company.email && (
             <p className="footer-line">
               <Mail size={15} />

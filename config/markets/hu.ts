@@ -17,6 +17,8 @@ export const hu: MarketConfig = {
       'H-1097 Budapest, Kén utca 8.',
     ],
     email: 'sales@eximpworld.hu',
+    centralEmail: 'info@eximpworld.hu',
+    depotEmail: 'depo@eximpworld.hu',
     phone: '+36 30 998 0998',
     number: null,
     vat: null,
