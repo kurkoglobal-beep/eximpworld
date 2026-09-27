@@ -46,8 +46,10 @@ A canonical URL-ek és sitemap az eximpworld.hu domainre mutatnak.
 ## Meglévő tartalmi korlátok
 
 Az ajánlatkérő jelenleg e-mailt / letölthető ajánlatkérést készít elő, nem küld
-szerveroldali levelet. A magyar cégadatokat változatlanul vettük át a mentésből;
-a telefonszám (+36 1 555 0123) és a hiányos cím élesítés előtt ellenőrzendő.
+szerveroldali levelet. A magyar kapcsolati adatokat a `config/markets/hu.ts`
+tartalmazza: Eximpworld Kft; Head Office: Andrássy Palace, 1061 Budapest,
+Andrássy út 9.; ADR Raktár / Depo: H-1097 Budapest, Kén utca 8.;
+telefonszám: +36 30 998 0998.
 A jogi oldalak jelenleg kitöltendő tartalmat jeleznek, noindex beállítással.
 
 Hivatalos referencia: https://vercel.com/docs/frameworks/full-stack/nextjs
