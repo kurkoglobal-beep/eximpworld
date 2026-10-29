@@ -1,4 +1,5 @@
 'use client';
+import { englishContact } from '@/config/english-contact';
 import { translatedTerm } from '@/lib/language';
 import LocaleLink from '@/components/locale-link';
 import { useState } from 'react';
@@ -652,7 +653,7 @@ function About() {
 export function CompanyPanel() {
   const { market, locale } = useLocale();
   const en = locale === 'en';
-  const c = market.company;
+  const c = en ? englishContact : market.company;
   const uk = market.id === 'uk';
   if (!uk)
     return (

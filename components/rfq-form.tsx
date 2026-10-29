@@ -1,4 +1,5 @@
 'use client';
+import { englishContact } from '@/config/english-contact';
 import LocaleLink from '@/components/locale-link';
 import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -9,6 +10,7 @@ import { marketPath } from '@/lib/market-routes';
 export function RFQForm() {
   const { market, locale } = useLocale();
   const en = locale === 'en';
+  const company = en ? englishContact : market.company;
   const uk = market.id === 'uk';
   const params = useSearchParams();
   const initial = params.get('product') || '';
@@ -50,7 +52,7 @@ export function RFQForm() {
     const data = {
       ...Object.fromEntries(new FormData(form)),
       market: market.id,
-      companyRecipient: market.company.name,
+      companyRecipient: company.name,
       productName: selected?.name || product,
     };
     try {
@@ -81,14 +83,14 @@ export function RFQForm() {
             new Blob([body], { type: 'text/plain;charset=utf-8' }),
           ),
         );
-        if (market.company.email)
+        if (company.email)
           setMail(
-            `mailto:${market.company.email}?subject=${encodeURIComponent(`RFQ — ${selected?.name || 'Chemical supply'}`)}&body=${encodeURIComponent(body)}`,
+            `mailto:${company.email}?subject=${encodeURIComponent(`RFQ — ${selected?.name || 'Chemical supply'}`)}&body=${encodeURIComponent(body)}`,
           );
         setStatus(
           en
             ? 'Your request is prepared, but has not been sent. Download a copy' +
-                (market.company.email
+                (company.email
                   ? ' or open it in your email application to send.'
                   : '. Online submission is not yet available.')
             : 'Az ajánlatkérés elkészült, de még nincs elküldve. Töltse le, vagy nyissa meg levelezőjében az elküldéshez.',

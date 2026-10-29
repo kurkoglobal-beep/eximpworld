@@ -1,4 +1,5 @@
 'use client';
+import { englishContact } from '@/config/english-contact';
 import { translatedTerm } from '@/lib/language';
 import LocaleLink from '@/components/locale-link';
 import { usePathname } from 'next/navigation';
@@ -135,6 +136,7 @@ export function Brand({ inverted = false }: { inverted?: boolean }) {
 }
 export function Footer() {
   const { locale, market } = useLocale();
+  const company = locale === 'en' ? englishContact : market.company;
   const uk = market.id === 'uk';
   const footerLinks = uk
     ? ['/products', '/industries', '/services', '/about', '/contact']
@@ -177,50 +179,50 @@ export function Footer() {
           <p className="footer-line">
             <MapPin size={15} />{' '}
             <span>
-              {market.company.name}
+              {company.name}
               <br />
-              {market.company.address.map(x => translatedTerm(x, locale === 'en')).join(', ')}
+              {company.address.map(x => translatedTerm(x, locale === 'en')).join(', ')}
             </span>
           </p>
           {[
-            [locale === 'hu' ? 'Központi e-mail' : 'Central email', market.company.centralEmail],
-            [locale === 'hu' ? 'Depo/Raktár' : 'Depot/Warehouse', market.company.depotEmail],
+            [locale === 'hu' ? 'Központi e-mail' : 'Central email', company.centralEmail],
+            [locale === 'hu' ? 'Depo/Raktár' : 'Depot/Warehouse', company.depotEmail],
           ].map(([label, email]) => email && (
             <p className="footer-line" key={email}>
               <Mail size={15} />
               <span>{label}: <LocaleLink href={`mailto:${email}`}>{email}</LocaleLink></span>
             </p>
           ))}
-          {market.company.email && (
+          {company.email && (
             <p className="footer-line">
               <Mail size={15} />
-              <LocaleLink href={`mailto:${market.company.email}`}>
-                {market.company.email}
+              <LocaleLink href={`mailto:${company.email}`}>
+                {company.email}
               </LocaleLink>
             </p>
           )}
-          {market.company.phone && (
+          {company.phone && (
             <p className="footer-line">
               <Phone size={15} />
-              <LocaleLink href={`tel:${market.company.phone.replace(/\s/g, '')}`}>
-                {market.company.phone}
+              <LocaleLink href={`tel:${company.phone.replace(/\s/g, '')}`}>
+                {company.phone}
               </LocaleLink>
             </p>
           )}
-          {market.company.number && (
+          {company.number && (
             <p className="footer-line">
-              Company number: {market.company.number}
+              Company number: {company.number}
             </p>
           )}
-          {market.company.vat && (
-            <p className="footer-line">VAT: {market.company.vat}</p>
+          {company.vat && (
+            <p className="footer-line">VAT: {company.vat}</p>
           )}
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-3 px-5 py-5 text-[11px] text-slate-500 lg:px-10">
           <span>
-            © {new Date().getFullYear()} {market.company.name}.{' '}
+            © {new Date().getFullYear()} {company.name}.{' '}
             {locale === 'hu'
               ? 'Minden jog fenntartva.'
               : 'All rights reserved.'}
