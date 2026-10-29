@@ -1,4 +1,6 @@
 'use client';
+import { translatedTerm } from '@/lib/language';
+import LocaleLink from '@/components/locale-link';
 import { usePathname } from 'next/navigation';
 import {
   ChevronDown,
@@ -44,7 +46,7 @@ export function Header() {
           <Brand />
           <nav className="hidden items-center gap-4 text-xs font-semibold text-slate-500 lg:flex">
             {navLinks.map((l, i) => (
-              <a
+              <LocaleLink
                 key={l}
                 className={
                   path === l ? 'text-[#1E293B]' : 'hover:text-[#1E293B]'
@@ -53,17 +55,17 @@ export function Header() {
                 aria-current={path === l ? 'page' : undefined}
               >
                 {navLabels[i]}
-              </a>
+              </LocaleLink>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a
+            <LocaleLink
               href={marketPath('/termekek', market.id)}
               className="hidden size-10 place-items-center rounded-full text-slate-500 hover:bg-slate-100 sm:grid"
               aria-label="Search"
             >
               <Search size={18} />
-            </a>
+            </LocaleLink>
             <MarketSwitcher />
             {!uk && (
               <button
@@ -73,12 +75,12 @@ export function Header() {
                 {locale.toUpperCase()} <ChevronDown size={13} />
               </button>
             )}
-            <a
+            <LocaleLink
               href={marketPath('/kapcsolat', market.id)}
               className="hidden rounded-lg bg-[#2563EB] px-5 py-3 text-xs font-bold text-white sm:block"
             >
               {locale === 'hu' ? 'Kérjen ajánlatot' : 'Request a quote'}
-            </a>
+            </LocaleLink>
             <button
               onClick={() => setOpen(!open)}
               className="grid size-10 place-items-center lg:hidden"
@@ -92,7 +94,7 @@ export function Header() {
         {open && (
           <nav className="border-t bg-white px-5 py-5 lg:hidden">
             {navLinks.map((l, i) => (
-              <a
+              <LocaleLink
                 onClick={() => setOpen(false)}
                 className={`block border-b border-slate-100 py-3 text-sm font-bold ${path === l ? 'text-[#2563EB]' : 'text-[#1E293B]'}`}
                 key={l}
@@ -100,7 +102,7 @@ export function Header() {
                 aria-current={path === l ? 'page' : undefined}
               >
                 {navLabels[i]}
-              </a>
+              </LocaleLink>
             ))}
             {!uk && (
               <button
@@ -118,7 +120,7 @@ export function Header() {
 }
 export function Brand({ inverted = false }: { inverted?: boolean }) {
   return (
-    <a
+    <LocaleLink
       href="/"
       className={`brand-image-link ${inverted ? 'brand-image-link-dark' : ''}`}
       aria-label="EximpWorld – Home"
@@ -128,7 +130,7 @@ export function Brand({ inverted = false }: { inverted?: boolean }) {
         alt="Eximpworld – Chemicals for a stronger tomorrow"
         className="brand-image"
       />
-    </a>
+    </LocaleLink>
   );
 }
 export function Footer() {
@@ -163,9 +165,9 @@ export function Footer() {
             {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
           </h3>
           {footerLinks.map((x, i) => (
-            <a className="footer-link" href={x} key={x}>
+            <LocaleLink className="footer-link" href={x} key={x}>
               {footerLabels[i]}
-            </a>
+            </LocaleLink>
           ))}
         </div>
         <div>
@@ -177,7 +179,7 @@ export function Footer() {
             <span>
               {market.company.name}
               <br />
-              {market.company.address.join(', ')}
+              {market.company.address.map(x => translatedTerm(x, locale === 'en')).join(', ')}
             </span>
           </p>
           {[
@@ -186,23 +188,23 @@ export function Footer() {
           ].map(([label, email]) => email && (
             <p className="footer-line" key={email}>
               <Mail size={15} />
-              <span>{label}: <a href={`mailto:${email}`}>{email}</a></span>
+              <span>{label}: <LocaleLink href={`mailto:${email}`}>{email}</LocaleLink></span>
             </p>
           ))}
           {market.company.email && (
             <p className="footer-line">
               <Mail size={15} />
-              <a href={`mailto:${market.company.email}`}>
+              <LocaleLink href={`mailto:${market.company.email}`}>
                 {market.company.email}
-              </a>
+              </LocaleLink>
             </p>
           )}
           {market.company.phone && (
             <p className="footer-line">
               <Phone size={15} />
-              <a href={`tel:${market.company.phone.replace(/\s/g, '')}`}>
+              <LocaleLink href={`tel:${market.company.phone.replace(/\s/g, '')}`}>
                 {market.company.phone}
-              </a>
+              </LocaleLink>
             </p>
           )}
           {market.company.number && (
@@ -225,20 +227,20 @@ export function Footer() {
           </span>
           <div className="flex flex-wrap gap-4">
             {[
-              ['/adatvedelem', uk ? 'Privacy Policy' : 'Adatvédelem'],
-              ['/sutik', uk ? 'Cookie Policy' : 'Sütik'],
-              ['/aszf', uk ? 'Terms & Conditions' : 'ÁSZF'],
+              ['/adatvedelem', locale === 'en' ? 'Privacy Policy' : 'Adatvédelem'],
+              ['/sutik', locale === 'en' ? 'Cookie Policy' : 'Sütik'],
+              ['/aszf', locale === 'en' ? 'Terms & Conditions' : 'ÁSZF'],
             ].map(([path, label]) => (
-              <a key={path} href={marketPath(path, market.id)}>
+              <LocaleLink key={path} href={marketPath(path, market.id)}>
                 {label}
-              </a>
+              </LocaleLink>
             ))}
             <button
               onClick={() =>
                 window.dispatchEvent(new Event('eximp-cookie-settings'))
               }
             >
-              {uk ? 'Cookie settings' : 'Sütibeállítások'}
+              {locale === 'en' ? 'Cookie settings' : 'Sütibeállítások'}
             </button>
           </div>
         </div>

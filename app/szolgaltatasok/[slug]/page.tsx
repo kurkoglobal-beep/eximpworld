@@ -1,4 +1,5 @@
 'use client';
+import LocaleLink from '@/components/locale-link';
 
 import { useLocale } from '@/components/locale';
 import { Footer, Header } from '@/components/site-shell';
@@ -22,10 +23,10 @@ export default function ServiceDetail() {
           <h1 className="section-title">
             {en ? 'Service not found.' : 'A szolgáltatás nem található.'}
           </h1>
-          <a href="/szolgaltatasok" className="btn-primary mt-8">
+          <LocaleLink href="/szolgaltatasok" className="btn-primary mt-8">
             <ArrowLeft size={16} />{' '}
             {en ? 'Back to services' : 'Vissza a szolgáltatásokhoz'}
-          </a>
+          </LocaleLink>
         </main>
         <Footer />
       </>
@@ -44,13 +45,13 @@ export default function ServiceDetail() {
         <section className="relative overflow-hidden bg-[#1E293B] py-20 text-white">
           <div className="chemical-grid absolute inset-0 opacity-20" />
           <div className="relative mx-auto max-w-[1400px] px-5 lg:px-10">
-            <a
+            <LocaleLink
               href="/szolgaltatasok"
               className="inline-flex items-center gap-2 text-xs font-bold text-blue-200 hover:text-white"
             >
               <ArrowLeft size={15} />{' '}
               {en ? 'All services' : 'Összes szolgáltatás'}
-            </a>
+            </LocaleLink>
             <p className="eyebrow mt-9 text-blue-300">
               {en ? 'EximpWorld service' : 'EximpWorld szolgáltatás'}
             </p>
@@ -125,13 +126,13 @@ export default function ServiceDetail() {
                 : 'Írja meg az alapanyagot, mennyiséget, szállítási helyet és határidőt. Személyre szabott megoldást készítünk.'}
             </p>
           </div>
-          <a
+          <LocaleLink
             href={`/kapcsolat?service=${encodeURIComponent(service.titleHu)}`}
             className="btn-primary shrink-0"
           >
             {en ? 'Request consultation' : 'Kapcsolatfelvétel'}{' '}
             <ArrowRight size={17} />
-          </a>
+          </LocaleLink>
         </section>
       </main>
       <Footer />

@@ -1,4 +1,5 @@
 'use client';
+import LocaleLink from '@/components/locale-link';
 import { useState } from 'react';
 import { ipaProduct } from '@/lib/uk-products';
 import { calculateSupply } from '@/lib/supply-planning';
@@ -97,12 +98,12 @@ export function SupplyPlanner() {
             )}
           </div>
           {result && (
-            <a
+            <LocaleLink
               className="btn-primary mt-6"
               href={`/contact?product=${ipaProduct.id}&annual=${Number(annual)}&packaging=${packaging}&months=${months}`}
             >
               REQUEST CONTRACT PRICE →
-            </a>
+            </LocaleLink>
           )}
           <p className="mt-4 text-xs text-slate-500">
             No price estimate is generated.

@@ -3,7 +3,7 @@
 import { useLocale } from '@/components/locale';
 import { Footer, Header, PageIntro } from '@/components/site-shell';
 import { ArrowRight, Handshake, ShieldCheck, Sparkles } from 'lucide-react';
-import Link from 'next/link';
+import Link from '@/components/locale-link';
 
 const values = {
   hu: [
@@ -28,7 +28,7 @@ export default function About() {
       <main>
         <PageIntro
           eyebrow={en ? 'About us' : 'Rólunk'}
-          title={en ? 'EximpWorld Ltd. – Tradition, innovation and international commitment' : 'Eximpworld Kft. – Hagyomány, innováció és nemzetközi elkötelezettség'}
+          title={en ? 'Eximpworld Kft. – Tradition, innovation and international commitment' : 'Eximpworld Kft. – Hagyomány, innováció és nemzetközi elkötelezettség'}
           copy={en ? 'A family business that grew from Winchester into a reliable bridge between international markets and European partners.' : 'Egy családi vállalkozás, amely Winchesterből indulva vált a nemzetközi piacok és európai partnerei megbízható hídjává.'}
         />
 

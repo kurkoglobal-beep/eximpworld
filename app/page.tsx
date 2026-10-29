@@ -1,5 +1,6 @@
 'use client';
-import Link from 'next/link';
+import { translatedTerm } from '@/lib/language';
+import Link from '@/components/locale-link';
 import {
   ArrowRight,
   CheckCircle2,
@@ -195,13 +196,13 @@ export default function Home() {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent" />
             </div>
             <div className="p-7 sm:p-12">
-              <span className="status">Raktárról elérhető</span>
+              <span className="status">{en ? 'Available from stock' : 'Raktárról elérhető'}</span>
               <h3 className="mt-5 text-3xl font-bold">Isopropyl Alcohol</h3>
               <p className="mt-2 text-slate-500">
                 CAS 67-63-0 · Tech / Pharma grade
               </p>
               <div className="mt-8 grid grid-cols-2 gap-3">
-                {['1000L IBC', '200L hordó', '25L kanna', 'Tartályautó'].map(
+                {(en ? ['1000L IBC', '200L drum', '25L can', 'Road tanker'] : ['1000L IBC', '200L hordó', '25L kanna', 'Tartályautó']).map(
                   (x) => (
                     <div
                       className="rounded-xl border border-slate-200 p-4 text-sm font-bold"
@@ -254,7 +255,7 @@ export default function Home() {
                 </div>
                 <h3>{en ? p.en : p.hu}</h3>
                 <p>CAS {p.cas}</p>
-                <span>{p.spec}</span>
+                <span>{translatedTerm(p.spec, en)}</span>
               </Link>
             ))}
           </div>
@@ -413,13 +414,14 @@ export default function Home() {
 }
 
 function HeroVisual() {
+  const {locale} = useLocale();
   return (
     <div className="hero-data-visual relative mx-auto aspect-[6/5] w-full min-w-0 max-w-xl lg:aspect-auto lg:min-h-[520px]">
       <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-cyan-200/10 bg-[radial-gradient(circle_at_55%_55%,rgba(14,165,233,.14),transparent_58%)]">
         <div className="data-floor absolute inset-x-0 bottom-0 h-[48%]" />
         <img
           src="/logistics-data-hero.png"
-          alt="IPA tartályok valós idejű logisztikai adatblokk előtt"
+          alt={locale === 'en' ? 'IPA containers with a real-time logistics data display' : 'IPA tartályok valós idejű logisztikai adatblokk előtt'}
           className="hero-data-product absolute inset-0 h-full w-full object-contain object-center"
         />
         <div className="data-scan-line" />

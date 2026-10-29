@@ -1,4 +1,5 @@
 'use client';
+import LocaleLink from '@/components/locale-link';
 
 import { useLocale } from '@/components/locale';
 import { Footer, Header } from '@/components/site-shell';
@@ -22,25 +23,25 @@ export default function Services() {
       <main>
         <section className="services-image-hero" aria-label={en ? 'Our services' : 'Szolgáltatásaink'}>
           <img
-            src="/services-logistics-hero.png"
+            src={en ? "/services-logistics-hero-en.png" : "/services-logistics-hero.png"}
             alt={
               en
                 ? 'Eximpworld chemical logistics centre, truck and industrial packaging'
                 : 'Eximpworld vegyipari logisztikai központ, kamion és ipari kiszerelések'
             }
           />
-          <a className="services-image-hero-link" href="#szolgaltatasaink">
+          <LocaleLink className="services-image-hero-link" href="#szolgaltatasaink">
             <span className="sr-only">
               {en ? 'View our services' : 'Szolgáltatásaink megtekintése'}
             </span>
-          </a>
+          </LocaleLink>
         </section>
         <section className="section">
           <div id="szolgaltatasaink" className="scroll-mt-28 grid gap-5 md:grid-cols-2">
             {services.map((service, index) => {
               const Icon = icons[index];
               return (
-                <a
+                <LocaleLink
                   href={`/szolgaltatasok/${service.slug}`}
                   className="service-card group block transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl"
                   key={service.slug}
@@ -57,7 +58,7 @@ export default function Services() {
                     {en ? 'View service' : 'Szolgáltatás megnyitása'}{' '}
                     <ArrowRight size={15} />
                   </span>
-                </a>
+                </LocaleLink>
               );
             })}
           </div>
@@ -72,9 +73,9 @@ export default function Services() {
                   : 'Felmérjük az Ön működéséhez illő beszállítási modellt.'}
               </p>
             </div>
-            <a className="btn-primary mt-6 sm:mt-0" href="/kapcsolat">
+            <LocaleLink className="btn-primary mt-6 sm:mt-0" href="/kapcsolat">
               {en ? 'Contact us' : 'Kapcsolatfelvétel'} <ArrowRight size={16} />
-            </a>
+            </LocaleLink>
           </div>
         </section>
       </main>

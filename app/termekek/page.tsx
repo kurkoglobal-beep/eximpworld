@@ -1,4 +1,6 @@
 'use client';
+import { translatedTerm } from '@/lib/language';
+import LocaleLink from '@/components/locale-link';
 
 import { useLocale } from '@/components/locale';
 import { Footer, Header, PageIntro } from '@/components/site-shell';
@@ -103,7 +105,7 @@ export default function Products() {
                 onChange={(event) => setCategory(event.target.value)}
               >
                 {categories.map((item) => (
-                  <option key={item}>{item}</option>
+                  <option key={item} value={item}>{translatedTerm(item, en)}</option>
                 ))}
               </select>
             </div>
@@ -126,7 +128,7 @@ export default function Products() {
             {shown.map((product) => {
               const details = productDetails(product, en);
               return (
-                <a
+                <LocaleLink
                   key={product.hu}
                   href={`/termekek/${productSlug(product)}`}
                   className="group flex min-h-[270px] flex-col rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
@@ -136,7 +138,7 @@ export default function Products() {
                       {en ? 'Available' : 'Elérhető'}
                     </span>
                     <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                      {product.category}
+                      {translatedTerm(product.category, en)}
                     </span>
                   </div>
                   <h2 className="mt-7 text-xl font-bold text-[#1E293B] transition group-hover:text-[#2563EB]">
@@ -160,7 +162,7 @@ export default function Products() {
                     {en ? 'Open technical profile' : 'Termékadatlap megnyitása'}{' '}
                     <ArrowRight size={14} />
                   </span>
-                </a>
+                </LocaleLink>
               );
             })}
           </div>

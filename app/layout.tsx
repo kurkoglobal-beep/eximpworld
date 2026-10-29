@@ -1,3 +1,4 @@
+import { languageHref } from '@/lib/language';
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import './globals.css';
@@ -13,13 +14,14 @@ async function context() {
   const id = 'hu';
   return {
     market: markets[id],
+    locale: h.get('x-eximp-language') === 'en' ? 'en' as const : 'hu' as const,
     path: h.get('x-eximp-path') || '/',
     preview: h.get('x-eximp-preview') === 'true',
   };
 }
 export async function generateMetadata(): Promise<Metadata> {
-  const { market, path, preview } = await context();
-  const canonical = marketUrl(path, market.id);
+  const { market, path, preview, locale } = await context();
+  const canonical = 'https://eximpworld.hu' + languageHref(path, locale);
   const uk = market.id === 'uk';
   const product = ukProducts.find(
     (p) => `/products/${p.id}` === marketPath(path, 'uk'),
@@ -35,18 +37,23 @@ export async function generateMetadata(): Promise<Metadata> {
     '/cookie-policy': 'Cookie Policy',
     '/terms-and-conditions': 'Terms & Conditions',
   };
-  const title = product
+  const originalTitle = product
     ? uk
       ? product.seo.title
       : `${huProduct?.hu || product.name} | EximpWorld Hungary`
     : uk && titles[path]
       ? `${titles[path]} | EximpWorld UK`
       : market.seo.title;
-  const description = product
+  const originalDescription = product
     ? uk
       ? product.seo.description
       : `${huProduct?.hu || product.name} – műszaki adatok, dokumentáció és egyedi B2B ajánlatkérés.`
     : market.seo.description;
+  const englishTitles: Record<string, string> = {
+    '/': 'Chemical Raw Materials', '/termekek': 'Product Catalogue', '/szolgaltatasok': 'Services', '/rolunk': 'About us', '/kapcsolat': 'Contact and Quotation', '/iparagak': 'Industries', '/adatvedelem': 'Privacy Policy', '/sutik': 'Cookie Policy', '/aszf': 'Terms & Conditions'
+  };
+  const title = locale === 'en' ? `${huProduct?.en || englishTitles[path] || 'Chemical Supply Services'} | EximpWorld Hungary` : originalTitle;
+  const description = locale === 'en' ? (huProduct ? `${huProduct.en} – technical information, documentation and individual B2B quotations.` : 'Strategic raw material supply and reliable industrial partnerships through direct international manufacturer relationships.') : originalDescription;
   const incompleteLegal = [
     '/privacy-policy',
     '/cookie-policy',
@@ -63,7 +70,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical,
       languages: {
         'hu-HU': marketUrl(path, 'hu'),
-        'en-GB': marketUrl(path, 'uk'),
+        'en-GB': 'https://eximpworld.hu' + languageHref(path, 'en'),
       },
     },
     robots:
@@ -72,7 +79,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: canonical,
-      locale: market.hreflang.replace('-', '_'),
+      locale: locale === 'en' ? 'en_GB' : 'hu_HU',
       type: 'website',
       images: uk ? [] : ['/og.png'],
     },
@@ -90,11 +97,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { market, preview } = await context();
+  const { market, preview, locale } = await context();
   return (
-    <html lang={market.language}>
+    <html lang={locale}>
       <body className="antialiased">
-        <LocaleProvider initialMarket={market.id} preview={false}>
+        <LocaleProvider initialLocale={locale} initialMarket={market.id} preview={preview}>
           {children}
           <CookieNotice />
         </LocaleProvider>

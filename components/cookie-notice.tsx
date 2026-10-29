@@ -1,10 +1,11 @@
 'use client';
+import LocaleLink from '@/components/locale-link';
 import { useEffect, useState } from 'react';
 import { useLocale } from './locale';
 import { marketPath } from '@/lib/market-routes';
 export function CookieNotice() {
-  const { market } = useLocale();
-  const en = market.id === 'uk';
+  const { market, locale } = useLocale();
+  const en = locale === 'en';
   const [open, setOpen] = useState(false);
   const key = `eximp-cookie-choice-${market.id}-v1`;
   useEffect(() => {
@@ -37,9 +38,9 @@ export function CookieNotice() {
           {en
             ? 'This website uses essential functionality and stores your cookie preference in this browser. No optional analytics or advertising cookies are enabled by this application.'
             : 'Az oldal az alapvető működéshez szükséges funkciókat használja, és ebben a böngészőben tárolja a sütibeállítást. Az alkalmazás nem kapcsol be opcionális analitikai vagy hirdetési sütiket.'}{' '}
-          <a href={marketPath('/sutik', market.id)}>
+          <LocaleLink href={marketPath('/sutik', market.id)}>
             {en ? 'Cookie policy' : 'Sütitájékoztató'}
-          </a>
+          </LocaleLink>
         </p>
       </div>
       <button className="btn-primary" onClick={close}>

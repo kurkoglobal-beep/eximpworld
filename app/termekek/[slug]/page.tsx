@@ -1,4 +1,6 @@
 'use client';
+import { translatedTerm } from '@/lib/language';
+import LocaleLink from '@/components/locale-link';
 
 import { useLocale } from '@/components/locale';
 import { Footer, Header } from '@/components/site-shell';
@@ -35,10 +37,10 @@ export default function ProductDetail() {
           <h1 className="section-title">
             {en ? 'Product not found.' : 'A termék nem található.'}
           </h1>
-          <a href="/termekek" className="btn-primary mt-8">
+          <LocaleLink href="/termekek" className="btn-primary mt-8">
             <ArrowLeft size={16} />{' '}
             {en ? 'Back to catalogue' : 'Vissza a katalógushoz'}
-          </a>
+          </LocaleLink>
         </main>
         <Footer />
       </>
@@ -66,16 +68,16 @@ export default function ProductDetail() {
           <div className="chemical-grid absolute inset-0 opacity-20" />
           <div className="relative mx-auto grid max-w-[1400px] gap-10 px-5 lg:grid-cols-[1.25fr_.75fr] lg:items-center lg:px-10">
             <div>
-              <a
+              <LocaleLink
                 href="/termekek"
                 className="inline-flex items-center gap-2 text-xs font-bold text-blue-200 hover:text-white"
               >
                 <ArrowLeft size={15} />{' '}
                 {en ? 'Back to catalogue' : 'Vissza a katalógushoz'}
-              </a>
+              </LocaleLink>
               <p className="eyebrow mt-8 text-blue-300">
                 {en ? 'B2B product profile' : 'B2B termékadatlap'} ·{' '}
-                {product.category}
+                {translatedTerm(product.category, en)}
               </p>
               <h1 className="mt-4 max-w-4xl text-[clamp(38px,5vw,64px)] font-semibold leading-[1.04] tracking-[-.04em]">
                 {title}
@@ -89,17 +91,17 @@ export default function ProductDetail() {
                 <Badge>{en ? 'European delivery' : 'Európai szállítás'}</Badge>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a className="btn-primary" href={quoteUrl}>
+                <LocaleLink className="btn-primary" href={quoteUrl}>
                   {en ? 'Request a quote' : 'Ajánlatkérés'}{' '}
                   <ArrowRight size={16} />
-                </a>
-                <a
+                </LocaleLink>
+                <LocaleLink
                   className="inline-flex items-center gap-2 rounded-lg border border-white/35 px-5 py-3 text-sm font-bold hover:bg-white/10"
                   href={quoteUrl}
                 >
                   <FileText size={17} />{' '}
                   {en ? 'Request documentation' : 'Dokumentáció kérése'}
-                </a>
+                </LocaleLink>
               </div>
             </div>
             <aside className="rounded-3xl bg-white p-7 text-[#1E293B] shadow-2xl sm:p-9">
@@ -117,7 +119,7 @@ export default function ProductDetail() {
                 />
                 <QuickRow
                   label={en ? 'Grade' : 'Minőség'}
-                  value={product.spec}
+                  value={translatedTerm(product.spec, en)}
                 />
                 <QuickRow
                   label={en ? 'Packaging' : 'Kiszerelés'}
@@ -162,13 +164,13 @@ export default function ProductDetail() {
                   />
                   <DataRow
                     label={en ? 'Product category' : 'Termékkategória'}
-                    value={product.category}
+                    value={translatedTerm(product.category, en)}
                   />
                   <DataRow
                     label={
                       en ? 'Grade / concentration' : 'Minőség / koncentráció'
                     }
-                    value={product.spec}
+                    value={translatedTerm(product.spec, en)}
                   />
                   <DataRow
                     label={en ? 'Product form' : 'Termékforma'}
@@ -334,10 +336,10 @@ export default function ProductDetail() {
                     ? 'Send us the required specification, quantity, packaging and delivery location. We will confirm current availability and matching documentation.'
                     : 'Adja meg a kívánt specifikációt, mennyiséget, kiszerelést és szállítási helyet. Visszaigazoljuk az aktuális elérhetőséget és a kapcsolódó dokumentációt.'}
                 </p>
-                <a href={quoteUrl} className="btn-primary mt-5">
+                <LocaleLink href={quoteUrl} className="btn-primary mt-5">
                   {en ? 'Start request' : 'Ajánlatkérés indítása'}{' '}
                   <ArrowRight size={16} />
-                </a>
+                </LocaleLink>
               </Accordion>
 
               <Accordion
@@ -346,7 +348,7 @@ export default function ProductDetail() {
                 {related.length ? (
                   <div className="grid gap-3 sm:grid-cols-2">
                     {related.map((item) => (
-                      <a
+                      <LocaleLink
                         key={item.hu}
                         href={`/termekek/${productSlug(item)}`}
                         className="rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:bg-blue-50"
@@ -355,9 +357,9 @@ export default function ProductDetail() {
                           {en ? item.en : item.hu}
                         </strong>
                         <span className="mt-1 block text-xs text-slate-500">
-                          CAS {item.cas} · {item.spec}
+                          CAS {item.cas} · {translatedTerm(item.spec, en)}
                         </span>
-                      </a>
+                      </LocaleLink>
                     ))}
                   </div>
                 ) : (
@@ -385,16 +387,16 @@ export default function ProductDetail() {
                     : 'A minőséget, kiszerelést, szállítási feltételeket és dokumentációt egyedileg igazoljuk vissza.'}
                 </p>
                 <div className="mt-6 grid gap-3">
-                  <a href={quoteUrl} className="btn-primary justify-center">
+                  <LocaleLink href={quoteUrl} className="btn-primary justify-center">
                     {en ? 'Request a quote' : 'Ajánlatkérés'}{' '}
                     <ArrowRight size={16} />
-                  </a>
-                  <a
+                  </LocaleLink>
+                  <LocaleLink
                     href={quoteUrl}
                     className="inline-flex justify-center rounded-lg border border-[#2563EB] px-4 py-3 text-sm font-bold text-[#2563EB] hover:bg-blue-50"
                   >
                     SDS / TDS / CoA
-                  </a>
+                  </LocaleLink>
                 </div>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm leading-6 text-slate-600">

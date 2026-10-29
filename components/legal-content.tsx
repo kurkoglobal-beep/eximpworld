@@ -1,10 +1,11 @@
 'use client';
+import { translatedTerm } from '@/lib/language';
 import { usePathname } from 'next/navigation';
 import { useLocale } from './locale';
 import { PageIntro } from './site-shell';
 export function LegalPageContent() {
-  const { market } = useLocale();
-  const en = market.id === 'uk';
+  const { market, locale } = useLocale();
+  const en = locale === 'en';
   const path = usePathname();
   const kind =
     path.includes('cookie') || path.includes('sutik')
@@ -31,14 +32,14 @@ export function LegalPageContent() {
         title={title}
         copy={
           en
-            ? 'Information for visitors to the United Kingdom website.'
+            ? 'Information for visitors to the Hungarian website.'
             : 'Tájékoztatás a magyar weboldal látogatóinak.'
         }
       />
       <section className="section">
         <article className="uk-card max-w-4xl mx-auto">
           <h2>{market.company.name}</h2>
-          <p>{market.company.address.join(', ')}</p>
+          <p>{market.company.address.map(x => translatedTerm(x, en)).join(', ')}</p>
           {approved ? (
             approved.map((paragraph, i) => <p key={i}>{paragraph}</p>)
           ) : (

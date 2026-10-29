@@ -10,6 +10,7 @@ export function proxy(request: NextRequest) {
   }
   const headers = new Headers(request.headers);
   headers.set('x-eximp-market', 'hu');
+  headers.set('x-eximp-language', request.nextUrl.searchParams.get('lang') === 'en' ? 'en' : 'hu');
   headers.set('x-eximp-path', path);
   const host = (request.headers.get('host') || request.nextUrl.hostname).toLowerCase().replace(/:\d+$/, '');
   const preview = !['eximpworld.hu', 'www.eximpworld.hu'].includes(host) || process.env.VERCEL_ENV === 'preview';

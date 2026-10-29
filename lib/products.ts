@@ -1,3 +1,4 @@
+import { translatedTerm } from './language';
 export type Product = {
   hu: string;
   en: string;
@@ -267,7 +268,7 @@ export function productTechnicalData(product: Product, en = false) {
   const liquid = liquidCategories.has(product.category);
   return {
     formula:
-      formulas[product.hu] ??
+      (formulas[product.hu] ? translatedTerm(formulas[product.hu], en) : undefined) ??
       (en ? 'Supplier specification' : 'Beszállítói specifikáció'),
     synonym: `${product.en} · ${product.hu}`,
     form: liquid

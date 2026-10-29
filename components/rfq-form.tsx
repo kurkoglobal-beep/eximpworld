@@ -1,4 +1,5 @@
 'use client';
+import LocaleLink from '@/components/locale-link';
 import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLocale } from './locale';
@@ -159,7 +160,7 @@ export function RFQForm() {
           en ? 'Country' : 'Ország',
           'text',
           true,
-          uk ? 'United Kingdom' : 'Magyarország',
+          uk ? 'United Kingdom' : en ? 'Hungary' : 'Magyarország',
         )}
         <label className="field">
           <span>{en ? 'Product' : 'Termék'} *</span>
@@ -265,9 +266,9 @@ export function RFQForm() {
         {en
           ? 'Required fields are marked *. Delivery dates and specifications are requests, subject to confirmation.'
           : 'A * mezők kitöltése kötelező. A szállítási dátum és specifikáció visszaigazolást igényel.'}{' '}
-        <a className="underline" href={marketPath('/adatvedelem', market.id)}>
+        <LocaleLink className="underline" href={marketPath('/adatvedelem', market.id)}>
           {en ? 'Privacy information' : 'Adatkezelési információk'}
-        </a>
+        </LocaleLink>
       </p>
       {!market.rfq.endpoint && (
         <p className="mt-3 text-xs text-slate-500">
@@ -293,17 +294,17 @@ export function RFQForm() {
           {status}
           {download && (
             <div className="mt-4 flex flex-wrap gap-5">
-              <a
+              <LocaleLink
                 className="text-link"
                 href={download}
                 download={`EximpWorld-${market.id}-RFQ.txt`}
               >
                 {en ? 'Download request' : 'Ajánlatkérés letöltése'}
-              </a>
+              </LocaleLink>
               {mail && (
-                <a className="text-link" href={mail}>
+                <LocaleLink className="text-link" href={mail}>
                   {en ? 'Open email to send' : 'Megnyitás levelezőben'}
-                </a>
+                </LocaleLink>
               )}
             </div>
           )}

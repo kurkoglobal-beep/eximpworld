@@ -1,4 +1,6 @@
 'use client';
+import { translatedTerm } from '@/lib/language';
+import LocaleLink from '@/components/locale-link';
 import { useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import {
@@ -82,12 +84,12 @@ function Home() {
               distribution across the United Kingdom.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a className="btn-primary" href="/products">
+              <LocaleLink className="btn-primary" href="/products">
                 EXPLORE PRODUCTS <ArrowRight size={16} />
-              </a>
-              <a className="btn-ghost" href="/contact">
+              </LocaleLink>
+              <LocaleLink className="btn-ghost" href="/contact">
                 REQUEST A QUOTE
-              </a>
+              </LocaleLink>
             </div>
             <p className="mt-9 text-xs tracking-widest text-slate-400">
               EUROPEAN SUPPLY CAPABILITIES · UK INDUSTRIAL FOCUS
@@ -116,9 +118,9 @@ function Home() {
           <strong>European IPA 99.9%</strong>
           <span>Current market information and pricing on request.</span>
         </div>
-        <a className="text-link" href={rfq()}>
+        <LocaleLink className="text-link" href={rfq()}>
           REQUEST CURRENT PRICE →
-        </a>
+        </LocaleLink>
       </section>
       <section className="section">
         <div className="uk-feature">
@@ -162,15 +164,15 @@ function Home() {
               selected grade and supplier.
             </p>
             <div className="mt-7 flex flex-wrap gap-4">
-              <a className="btn-primary" href={`/products/${ipaProduct.id}`}>
+              <LocaleLink className="btn-primary" href={`/products/${ipaProduct.id}`}>
                 VIEW PRODUCT →
-              </a>
-              <a className="text-link" href={rfq()}>
+              </LocaleLink>
+              <LocaleLink className="text-link" href={rfq()}>
                 REQUEST A QUOTE
-              </a>
-              <a className="text-link" href={rfq(ipaProduct, true)}>
+              </LocaleLink>
+              <LocaleLink className="text-link" href={rfq(ipaProduct, true)}>
                 REQUEST SDS
-              </a>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -182,13 +184,13 @@ function Home() {
               <p className="eyebrow">ONE PARTNER. YOUR REQUIREMENTS.</p>
               <h2 className="section-title mt-3">Chemistry for industry.</h2>
             </div>
-            <a className="text-link" href="/industries">
+            <LocaleLink className="text-link" href="/industries">
               EXPLORE INDUSTRIES →
-            </a>
+            </LocaleLink>
           </div>
           <div className="uk-card-grid mt-9">
             {industries.slice(0, 3).map((i, n) => (
-              <a
+              <LocaleLink
                 href={`/industries#${englishSlug(i.name)}`}
                 className="uk-card"
                 key={i.name}
@@ -197,7 +199,7 @@ function Home() {
                 <h3>{i.name}</h3>
                 <p>{i.copy}</p>
                 <ArrowRight className="mt-6 text-blue-600" size={20} />
-              </a>
+              </LocaleLink>
             ))}
           </div>
         </div>
@@ -242,7 +244,7 @@ function Facts({
 }
 function ProductCard({ product: p }: { product: UKProduct }) {
   return (
-    <a className="uk-card uk-product-card" href={`/products/${p.id}`}>
+    <LocaleLink className="uk-card uk-product-card" href={`/products/${p.id}`}>
       <span className="eyebrow">{p.category}</span>
       <span className="uk-formula">{p.formula || 'RAW MATERIAL'}</span>
       <h2>{p.name}</h2>
@@ -251,7 +253,7 @@ function ProductCard({ product: p }: { product: UKProduct }) {
       <span className="text-link mt-6">
         VIEW PRODUCT <ArrowRight size={16} />
       </span>
-    </a>
+    </LocaleLink>
   );
 }
 function Catalogue() {
@@ -305,9 +307,9 @@ function Catalogue() {
           <div className="uk-card">
             <h2>No matching products.</h2>
             <p>Try another name or CAS number, or tell us what you need.</p>
-            <a className="text-link mt-4" href="/contact">
+            <LocaleLink className="text-link mt-4" href="/contact">
               REQUEST SOURCING SUPPORT →
-            </a>
+            </LocaleLink>
           </div>
         )}
       </section>
@@ -326,9 +328,9 @@ function ProductPage({ product: p }: { product: UKProduct }) {
         copy="Technical information for your sourcing review. Final specification, availability and application suitability are confirmed with your quotation."
       />
       <section className="section">
-        <a className="text-link" href="/products">
+        <LocaleLink className="text-link" href="/products">
           ← ALL PRODUCTS
-        </a>
+        </LocaleLink>
         <div className="uk-product-layout mt-8">
           <div>
             <div className="uk-card">
@@ -360,14 +362,14 @@ function ProductPage({ product: p }: { product: UKProduct }) {
                 </p>
                 <div className="uk-variants">
                   {p.variants.map((v) => (
-                    <a
+                    <LocaleLink
                       aria-current={variant?.id === v.id ? 'true' : undefined}
                       key={v.id}
                       href={`/products/${p.id}?variant=${v.id}`}
                     >
                       <strong>{v.name}</strong>
                       <small>{v.purity || 'Specification on request'}</small>
-                    </a>
+                    </LocaleLink>
                   ))}
                 </div>
               </div>
@@ -431,12 +433,12 @@ function ProductPage({ product: p }: { product: UKProduct }) {
                   </div>
                 ))}
               </dl>
-              <a
+              <LocaleLink
                 className="text-link mt-5"
                 href={`${rfq(p, true)}${variant ? `&variant=${variant.id}` : ''}`}
               >
                 REQUEST SDS →
-              </a>
+              </LocaleLink>
             </div>
             <div className="uk-card mt-6">
               <h2>Logistics</h2>
@@ -456,18 +458,18 @@ function ProductPage({ product: p }: { product: UKProduct }) {
                 Share your grade, quantity and delivery location. Request a
                 current price in GBP and supporting documentation.
               </p>
-              <a
+              <LocaleLink
                 className="btn-primary mt-6"
                 href={`${rfq(p)}${variant ? `&variant=${variant.id}` : ''}`}
               >
                 REQUEST A QUOTE →
-              </a>
-              <a
+              </LocaleLink>
+              <LocaleLink
                 className="btn-ghost mt-3"
                 href={`${rfq(p, true)}${variant ? `&variant=${variant.id}` : ''}`}
               >
                 REQUEST SDS
-              </a>
+              </LocaleLink>
             </div>
           </aside>
         </div>
@@ -476,8 +478,8 @@ function ProductPage({ product: p }: { product: UKProduct }) {
   );
 }
 export function IndustryPage() {
-  const { market } = useLocale();
-  const en = market.id === 'uk';
+  const { market, locale } = useLocale();
+  const en = locale === 'en';
   return (
     <>
       <PageIntro
@@ -504,12 +506,12 @@ export function IndustryPage() {
               </span>
               <h2>{en ? i.name : i.hu}</h2>
               <p>{en ? i.copy : i.huCopy}</p>
-              <a
+              <LocaleLink
                 className="text-link mt-6"
                 href={marketPath('/contact', market.id)}
               >
                 {en ? 'DISCUSS YOUR REQUIREMENTS' : 'IGÉNYEK EGYEZTETÉSE'} →
-              </a>
+              </LocaleLink>
             </article>
           ))}
         </div>
@@ -580,9 +582,9 @@ function Services({ slug }: { slug?: string }) {
                 <li key={s}>{s}</li>
               ))}
             </ul>
-            <a className="btn-primary mt-7" href="/contact">
+            <LocaleLink className="btn-primary mt-7" href="/contact">
               DISCUSS YOUR REQUIREMENTS →
-            </a>
+            </LocaleLink>
           </div>
         </section>
       ) : (
@@ -591,7 +593,7 @@ function Services({ slug }: { slug?: string }) {
           <section className="section !pt-0">
             <div className="uk-card-grid">
               {services.map((s) => (
-                <a
+                <LocaleLink
                   className="uk-card"
                   href={`/services/${englishSlug(s.titleEn)}`}
                   key={s.slug}
@@ -599,7 +601,7 @@ function Services({ slug }: { slug?: string }) {
                   <h2>{s.titleEn}</h2>
                   <p>{s.shortEn}</p>
                   <span className="text-link mt-6">EXPLORE SERVICE →</span>
-                </a>
+                </LocaleLink>
               ))}
             </div>
           </section>
@@ -636,9 +638,9 @@ function About() {
               the starting point is your application, quantity and delivery
               location.
             </p>
-            <a className="btn-primary mt-7" href="/contact">
+            <LocaleLink className="btn-primary mt-7" href="/contact">
               TALK TO US →
-            </a>
+            </LocaleLink>
           </div>
           <CompanyPanel />
         </div>
@@ -664,29 +666,29 @@ export function CompanyPanel() {
         </p>
         <address className="mt-3 not-italic leading-7 text-slate-200">
           {c.address.map((x) => (
-            <div key={x}>{x}</div>
+            <div key={x}>{translatedTerm(x, en)}</div>
           ))}
         </address>
         {[
           [en ? 'Central email' : 'Központi e-mail', c.centralEmail],
           [en ? 'Depot/Warehouse' : 'Depo/Raktár', c.depotEmail],
         ].map(([label, email]) => email && (
-          <a className="block mt-6 text-blue-200" href={`mailto:${email}`} key={email}>
+          <LocaleLink className="block mt-6 text-blue-200" href={`mailto:${email}`} key={email}>
             {label}: {email}
-          </a>
+          </LocaleLink>
         ))}
         {c.email && (
-          <a className="block mt-6 text-blue-200" href={`mailto:${c.email}`}>
+          <LocaleLink className="block mt-6 text-blue-200" href={`mailto:${c.email}`}>
             {c.email}
-          </a>
+          </LocaleLink>
         )}
         {c.phone && (
-          <a
+          <LocaleLink
             className="block mt-3 text-blue-200"
             href={`tel:${c.phone.replace(/\s/g, '')}`}
           >
             {c.phone}
-          </a>
+          </LocaleLink>
         )}
         {c.number && <p className="mt-5">Company number: {c.number}</p>}
         {c.vat && <p className="mt-3">VAT: {c.vat}</p>}
@@ -709,9 +711,9 @@ export function CompanyPanel() {
           <div>
             <dt>{uk ? 'Sales & Enquiries' : en ? 'Email' : 'E-mail'}</dt>
             <dd>
-              <a href={`mailto:${c.salesEmail || c.email}`}>
+              <LocaleLink href={`mailto:${c.salesEmail || c.email}`}>
                 {c.salesEmail || c.email}
-              </a>
+              </LocaleLink>
             </dd>
           </div>
         )}
@@ -719,7 +721,7 @@ export function CompanyPanel() {
           <div>
             <dt>{en ? 'Telephone' : 'Telefonszám'}</dt>
             <dd>
-              <a href={`tel:${c.phone.replace(/\s/g, '')}`}>{c.phone}</a>
+              <LocaleLink href={`tel:${c.phone.replace(/\s/g, '')}`}>{c.phone}</LocaleLink>
             </dd>
           </div>
         )}
@@ -728,7 +730,7 @@ export function CompanyPanel() {
           <dd>
             <address className="not-italic leading-7">
               {c.address.map((x) => (
-                <div key={x}>{x}</div>
+                <div key={x}>{translatedTerm(x, en)}</div>
               ))}
             </address>
           </dd>
@@ -737,9 +739,9 @@ export function CompanyPanel() {
           <div className="company-emergency">
             <dt>Chemical / Transport Emergency Contact</dt>
             <dd>
-              <a href={`tel:${c.emergencyPhone.replace(/\s/g, '')}`}>
+              <LocaleLink href={`tel:${c.emergencyPhone.replace(/\s/g, '')}`}>
                 {c.emergencyPhone}
-              </a>
+              </LocaleLink>
             </dd>
             <dd className="mt-2 text-xs !text-slate-400">
               EximpWorld Ltd chemical / transport contact
@@ -797,9 +799,9 @@ function QuoteBand() {
         <p className="eyebrow text-blue-200">LET’S PLAN YOUR NEXT SUPPLY</p>
         <h2>Start with your requirements.</h2>
       </div>
-      <a className="btn-primary" href="/contact">
+      <LocaleLink className="btn-primary" href="/contact">
         REQUEST A QUOTE <ArrowRight size={16} />
-      </a>
+      </LocaleLink>
     </section>
   );
 }
@@ -808,9 +810,9 @@ function Missing() {
     <section className="section min-h-[60vh]">
       <p className="eyebrow">404</p>
       <h1 className="section-title mt-4">Page not found.</h1>
-      <a className="btn-primary mt-7" href="/products">
+      <LocaleLink className="btn-primary mt-7" href="/products">
         EXPLORE PRODUCTS →
-      </a>
+      </LocaleLink>
     </section>
   );
 }

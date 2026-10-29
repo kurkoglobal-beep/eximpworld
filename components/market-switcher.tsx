@@ -1,56 +1,8 @@
-'use client';
-import { usePathname } from 'next/navigation';
+"use client";
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useLocale } from './locale';
-import { marketUrl, marketPath } from '@/lib/market-routes';
+import { languageHref } from '@/lib/language';
 export function MarketSwitcher() {
-  const { market, preview } = useLocale();
-  const path = usePathname();
-  return (
-    <div className="market-selector" aria-label="Country / market">
-      <details>
-        <summary aria-label={`Market: ${market.name}`}>
-          {market.id === 'hu' ? '🇭🇺' : '🇬🇧'} <span>{market.name}</span>
-          <span aria-hidden>⌄</span>
-        </summary>
-        <div className="market-options">
-          {(['hu', 'uk'] as const).map((id) => (
-            <a
-              key={id}
-              href={id === 'hu' ? marketPath(path, 'hu') : marketUrl(path, id)}
-              aria-current={market.id === id ? 'true' : undefined}
-              onClick={(e) => {
-                const url = new URL(e.currentTarget.href, window.location.origin);
-                const current = new URL(window.location.href);
-                for (const key of [
-                  'product',
-                  'variant',
-                  'sds',
-                  'annual',
-                  'packaging',
-                  'months',
-                ]) {
-                  const value = current.searchParams.get(key);
-                  if (value) url.searchParams.set(key, value);
-                }
-                url.hash = current.hash;
-                e.currentTarget.href = url.href;
-              }}
-            >
-              {id === 'hu' ? '🇭🇺 Hungary' : '🇬🇧 United Kingdom'}
-            </a>
-          ))}
-          {preview && (
-            <div className="preview-markets">
-              <small>Market preview</small>
-              {(['hu', 'uk'] as const).map((id) => (
-                <a key={id} href={`${marketPath(path, id)}?market=${id}`}>
-                  {id.toUpperCase()} preview
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      </details>
-    </div>
-  );
+ const {locale} = useLocale(); const path = usePathname(); const query = useSearchParams();
+ return <div className="market-selector" aria-label="Language"><details><summary aria-label={locale === 'hu' ? 'Nyelv: Magyar' : 'Language: English'}>{locale === 'hu' ? '🇭🇺' : '🇬🇧'} <span>{locale === 'hu' ? 'Magyar' : 'English'}</span><span aria-hidden>⌄</span></summary><div className="market-options">{(['hu','en'] as const).map(id => <a key={id} href={languageHref(path + (query.toString() ? '?' + query : ''), id)} lang={id} aria-current={id === locale ? 'true' : undefined} onClick={e => {e.currentTarget.href = languageHref(window.location.pathname + window.location.search + window.location.hash, id);}}>{id === 'hu' ? '🇭🇺 Magyar' : '🇬🇧 English'}</a>)}</div></details></div>;
 }
