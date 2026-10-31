@@ -1,4 +1,5 @@
 'use client';
+import { ProductsHeroVideo } from '@/components/products-hero-video';
 import { translatedTerm } from '@/lib/language';
 import LocaleLink from '@/components/locale-link';
 
@@ -50,7 +51,7 @@ export default function Products() {
 
         <section className="mx-auto max-w-[1400px] px-5 pt-10 lg:px-10 lg:pt-14">
           <figure className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-[#0f2747] shadow-2xl">
-            <img
+            {en ? <ProductsHeroVideo /> : <img
               src="/products-logistics-facility.png"
               alt={
                 en
@@ -58,7 +59,7 @@ export default function Products() {
                   : 'Az EximpWorld Hungary vegyipari logisztikai központja és szállítójárművei'
               }
               className="aspect-[4/3] w-full object-cover sm:aspect-[16/7] transition duration-700 group-hover:scale-[1.015]"
-            />
+            />}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
             <figcaption className="absolute bottom-5 left-5 right-5 flex flex-wrap items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
               <div>
