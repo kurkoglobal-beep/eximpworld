@@ -1,4 +1,6 @@
 'use client';
+import { HungarianProductCard } from '@/components/hungarian-product-card';
+import { hungarianCatalogueProducts, hungarianInformationSheetFor } from '@/lib/product-information-hu';
 import { EnglishProductCard } from '@/components/english-product-card';
 import { englishCatalogueProducts } from '@/lib/product-information';
 import { ProductsHeroVideo } from '@/components/products-hero-video';
@@ -23,7 +25,7 @@ export default function Products() {
   const [category, setCategory] = useState('Mind');
   const shown = useMemo(
     () =>
-      (en ? englishCatalogueProducts : products).filter(
+      (en ? englishCatalogueProducts : hungarianCatalogueProducts).filter(
         (product) =>
           (category === 'Mind' || product.category === category) &&
           `${product.hu} ${product.en} ${product.cas}`
@@ -53,15 +55,7 @@ export default function Products() {
 
         <section className="mx-auto max-w-[1400px] px-5 pt-10 lg:px-10 lg:pt-14">
           <figure className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-[#0f2747] shadow-2xl">
-            {en ? <ProductsHeroVideo /> : <img
-              src="/products-logistics-facility.png"
-              alt={
-                en
-                  ? 'EximpWorld Hungary chemical logistics facility and delivery fleet'
-                  : 'Az EximpWorld Hungary vegyipari logisztikai központja és szállítójárművei'
-              }
-              className="aspect-[4/3] w-full object-cover sm:aspect-[16/7] transition duration-700 group-hover:scale-[1.015]"
-            />}
+            <ProductsHeroVideo alt={en ? undefined : 'EximpWorld logisztikai bemutatóvideó állóképe'} />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
             <figcaption className="absolute bottom-5 left-5 right-5 flex flex-wrap items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
               <div>
@@ -85,7 +79,7 @@ export default function Products() {
 
         <section className="section">
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex flex-col gap-3 lg:flex-row">
+            <div className={en ? "flex flex-col gap-3 lg:flex-row" : "grid gap-3 lg:grid-cols-[minmax(0,1fr)_300px]"}>
               <label className="relative flex-1">
                 <Search
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -123,13 +117,14 @@ export default function Products() {
               <FileText size={15} />{' '}
               {en
                 ? 'Product information and documentation'
-                : 'Minden termékhez tartozik műszaki adatlap'}
+                : 'Termékinformációk és dokumentáció'}
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((product) => {
               if (en) return <EnglishProductCard key={product.hu} product={product} />;
+              if (hungarianInformationSheetFor(product.cas)) return <HungarianProductCard key={product.hu} product={product} />;
               const details = productDetails(product, en);
               return (
                 <LocaleLink

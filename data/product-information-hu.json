@@ -1,0 +1,310 @@
+[
+  {
+    "slug": "isopropyl-alcohol",
+    "name": "Izopropil-alkohol (IPA)",
+    "cas": "67-63-0",
+    "ec": "200-661-7",
+    "formula": "C3H8O",
+    "synonyms": "Izopropanol; propán-2-ol; 2-propanol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "83°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízzel elegyedik"
+      ]
+    ],
+    "applications": "Oldószer nyomdafestékekben és lakkokban; tisztítószer-keverékek összetevője.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0554 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0554&p_lang=en"
+      },
+      {
+        "title": "INEOS - C3 alcohols",
+        "url": "https://www.ineos.com/businesses/ineos-enterprises/businesses/ineos-solvents/products/c3-alcohols/"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": false
+  },
+  {
+    "slug": "ethyl-acetate",
+    "name": "Etil-acetát",
+    "cas": "141-78-6",
+    "ec": "205-500-4",
+    "formula": "C4H8O2",
+    "synonyms": "Ecetsav-etil-észter; etil-etanoát",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "77°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "8,7 g/100 ml, 20°C-on"
+      ]
+    ],
+    "applications": "Oldószer bevonatokban és ragasztókban.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0367 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0367&p_lang=en"
+      },
+      {
+        "title": "Celanese - Ethyl acetate",
+        "url": "https://www.celanese.com/products/ethyl-acetate"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "acetone",
+    "name": "Aceton",
+    "cas": "67-64-1",
+    "ec": "200-662-2",
+    "formula": "C3H6O",
+    "synonyms": "Propán-2-on; dimetil-keton",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "56°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízzel elegyedik"
+      ]
+    ],
+    "applications": "Oldószer festékekhez és lakkokhoz; köztes anyag akrilpolimerek előállításához.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0087 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0087&p_lang=en"
+      },
+      {
+        "title": "INEOS Phenol - Acetone",
+        "url": "https://www.ineos.com/businesses/ineos-phenol/products/acetone/"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "n-propanol",
+    "name": "n-Propanol",
+    "cas": "71-23-8",
+    "ec": "200-746-9",
+    "formula": "C3H8O",
+    "synonyms": "Propán-1-ol; n-propil-alkohol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Megjelenés",
+        "Tiszta, színtelen folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "97°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízzel elegyedik"
+      ]
+    ],
+    "applications": "Oldószer flexográfiai és más nyomdafestékekben, valamint felületi bevonatokban.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0553 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0553&p_lang=en"
+      },
+      {
+        "title": "Eastman - n-Propyl alcohol",
+        "url": "https://www.eastman.com/en/products/product-detail/71000121/n-propyl-alcohol-n-propanol"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "xylene-mixed-isomers",
+    "name": "Xilol (izomerkeverék)",
+    "cas": "1330-20-7",
+    "ec": "215-535-7",
+    "formula": "C8H10 (xilolizomerek)",
+    "synonyms": "Dimetil-benzol; xilol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen folyadék"
+      ],
+      [
+        "Összetétel",
+        "Orto-, meta- és para-xilol keveréke"
+      ],
+      [
+        "Vízoldhatóság",
+        "Csekély vízoldhatóság"
+      ]
+    ],
+    "applications": "Oldószer festékekben, bevonatokban és nyomdafestékekben.",
+    "note": "A kereskedelmi keverékek etil-benzolt is tartalmazhatnak. Az izomerarányok és a fizikai tulajdonságok változhatnak; az összetételt és a specifikációt a beszállítóval kell egyeztetni.",
+    "sources": [
+      {
+        "title": "ITW Reagents - Xylene mixture (identity)",
+        "url": "https://www.itwreagents.com/united-states/en/product/pharma-production-excipients/xylene-mixture-of-isomers-technical-grade/211769"
+      },
+      {
+        "title": "WHO / IPCS - Xylenes, EHC 190",
+        "url": "https://www.inchem.org/documents/ehc/ehc/ehc190.htm"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "propylene-glycol",
+    "name": "Monopropilénglikol (MPG)",
+    "cas": "57-55-6",
+    "ec": "200-338-0",
+    "formula": "C3H8O2",
+    "synonyms": "Propilénglikol; propán-1,2-diol",
+    "category": "Glikolok",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen, viszkózus folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "188,2°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízzel elegyedik"
+      ]
+    ],
+    "applications": "Telítetlen poliésztergyanták alapanyaga; formulázott hőközlő folyadékok összetevője.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0321 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0321&p_lang=en"
+      },
+      {
+        "title": "Repsol - Industrial propylene glycol",
+        "url": "https://www.repsol.com/en/products-and-services/materials/product-range/propylene-glycol-for-industrial-use/index.cshtml"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": false
+  },
+  {
+    "slug": "monoethanolamine",
+    "name": "Monoetanol-amin (MEA)",
+    "cas": "141-43-5",
+    "ec": "205-483-3",
+    "formula": "C2H7NO",
+    "synonyms": "Etanolamin; 2-aminoetanol; 2-hidroxietil-amin",
+    "category": "Szerves anyagok",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen, viszkózus folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "171°C"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízben jól oldódik"
+      ]
+    ],
+    "applications": "Amin alapú abszorbens savas gázok, köztük szén-dioxid és hidrogén-szulfid eltávolítására ipari gáztisztításban.",
+    "note": "A referenciaértékek az anyagra, nem egy szállított minőségre vagy tételre vonatkoznak. Tisztasági és szennyezőanyag-határértékeket nem adunk meg.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0152 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0152&p_lang=en"
+      },
+      {
+        "title": "BASF - Gas-treatment formulations and solvents",
+        "url": "https://energy-resources.basf.com/global/en/gas-treatment/gas-treatment-oase/formulations-and-solvents"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "phosphoric-acid-75",
+    "name": "Foszforsav 75%",
+    "cas": "7664-38-2",
+    "ec": "231-633-2",
+    "formula": "H3PO4 (savkomponens)",
+    "synonyms": "Ortofoszforsav, vizes oldat",
+    "category": "Foszfátok",
+    "properties": [
+      [
+        "Megjelenés",
+        "Színtelen, viszkózus folyadék"
+      ],
+      [
+        "Referencia-forráspont",
+        "135°C (75%-os oldat)"
+      ],
+      [
+        "Vízoldhatóság",
+        "Vízzel elegyedik"
+      ]
+    ],
+    "applications": "Vízkezelési és fémfelület-kezelési célú foszfátsók előállításának alapanyaga.",
+    "note": "A 75% a sav névleges tömegarányát jelöli a vizes oldatban. A CAS-szám, az EC-szám és a képlet a savkomponenst azonosítja. A referencia-forráspont a 75%-os oldatra vonatkozik; a tényleges koncentráció beszállítói megerősítést igényel.",
+    "sources": [
+      {
+        "title": "Innophos - SDS, sections 1 and 9 (75% solution)",
+        "url": "https://www.innophos.com/-/media/innophos-com/customer-center-files/phosphates/public/unique/001/phos-acid-75-to-85-sds.pdf"
+      },
+      {
+        "title": "ILO / WHO - ICSC 1008 (acid formula)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=1008&p_lang=en"
+      },
+      {
+        "title": "Innophos - Phosphoric acid (technical)",
+        "url": "https://www.innophos.com/products/phos-acid-tech"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  }
+]

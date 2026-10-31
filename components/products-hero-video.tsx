@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 const source = '/products/logistics-hero.mp4';
 const poster = '/products/logistics-hero-poster.webp';
 
-export function ProductsHeroVideo() {
+export function ProductsHeroVideo({ alt = "EximpWorld chemical logistics promotional video still" }: { alt?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
   const [hasFrame, setHasFrame] = useState(false);
@@ -65,7 +65,7 @@ export function ProductsHeroVideo() {
   }, [motionAllowed]);
 
   return <div className="relative aspect-[4/3] w-full sm:aspect-[16/7]" data-products-video>
-    <img src={poster} alt="EximpWorld chemical logistics promotional video still" className="absolute inset-0 h-full w-full object-contain" />
+    <img src={poster} alt={alt} className="absolute inset-0 h-full w-full object-contain" />
     {motionAllowed && <video ref={videoRef} autoPlay muted loop playsInline preload="none" poster={poster} aria-hidden="true" tabIndex={-1} disablePictureInPicture disableRemotePlayback className={`pointer-events-none absolute inset-0 h-full w-full object-contain ${hasFrame ? 'opacity-100' : 'opacity-0'}`} />}
   </div>;
 }

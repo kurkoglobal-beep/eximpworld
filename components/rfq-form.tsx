@@ -4,6 +4,7 @@ import LocaleLink from '@/components/locale-link';
 import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLocale } from './locale';
+import { additionalHungarianQuoteOptions } from '@/lib/product-information-hu';
 import { additionalEnglishQuoteOptions } from '@/lib/product-information';
 import { products } from '@/lib/products';
 import { ukProducts, ipaVariants } from '@/lib/uk-products';
@@ -15,7 +16,7 @@ export function RFQForm() {
   const uk = market.id === 'uk';
   const params = useSearchParams();
   const initial = params.get('product') || '';
-  const quoteOptions = en ? [...ukProducts, ...additionalEnglishQuoteOptions] : ukProducts;
+  const quoteOptions = en ? [...ukProducts, ...additionalEnglishQuoteOptions] : [...ukProducts, ...additionalHungarianQuoteOptions];
   const match =
     quoteOptions.find(
       (p, i) =>
@@ -183,7 +184,7 @@ export function RFQForm() {
             </option>
             {quoteOptions.map((p, i) => (
               <option key={p.id} value={p.id}>
-                {en ? p.name : products[i].hu}
+                {en ? p.name : products[i]?.hu || p.name}
               </option>
             ))}
           </select>
