@@ -19,7 +19,7 @@ export function Careers() {
   const [area, setArea] = useState('');
   return <><Header /><main className={styles.page}>
     <section className={styles.hero}>
-      <div className={styles.heroImage} aria-hidden="true"><Image src="/about/chemical-sourcing.webp" alt="" fill preload sizes="(max-width: 767px) 100vw, 55vw" /></div>
+      <div className={styles.heroImage} aria-hidden="true"><Image src="/careers/team-collaboration.webp" alt="" fill preload sizes="(max-width: 767px) 100vw, 55vw" /></div>
       <div className={styles.inner}><div className={styles.heroCopy}>
         <p className={styles.eyebrow}>{company.label} · {company.country}</p>
         <p className={styles.pageTitle}>{content.title}</p><h1>{content.heading}</h1>
