@@ -1,0 +1,41 @@
+.section {
+  --truck-width: clamp(300px, 52vw, 720px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 65% 45%, #294761 0, #1e293b 55%, #152234 100%);
+  color: #fff;
+  padding-top: 64px;
+}
+.heading { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.rule { display: block; height: 2px; width: 48px; background: #d6b77d; margin: 0 auto 24px; }
+.heading h2 { font-size: clamp(28px, 3.4vw, 46px); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; text-wrap: balance; }
+.network { position: absolute; width: min(100%, 1050px); height: 100%; top: 0; left: 50%; transform: translateX(-50%); object-fit: contain; opacity: .25; pointer-events: none; transition: opacity 1.8s ease; }
+.section[data-phase='running'] .network,
+.section[data-phase='complete'] .network,
+.section[data-phase='static'] .network { opacity: .65; }
+.stage { position: relative; z-index: 1; height: clamp(280px, 32vw, 430px); margin-top: 20px; }
+.road { position: absolute; inset: auto 0 0; height: 85px; background: linear-gradient(#0d172229, #0d1722a6); border-top: 1px solid #a6bdcd26; }
+.road::after { content: ''; position: absolute; left: 0; right: 0; bottom: 25px; height: 1px; background: repeating-linear-gradient(90deg, #bdc9d43b 0 58px, transparent 58px 112px); }
+.track { position: absolute; bottom: 42px; width: 100%; transform: translate3d(calc((100% - var(--truck-width)) / 2), 0, 0); }
+.truck { display: block; width: var(--truck-width); max-width: none; height: auto; filter: drop-shadow(0 12px 9px #06101c66); }
+.section[data-phase='idle'] .track { transform: translate3d(calc(-1 * var(--truck-width) - 24px), 0, 0); }
+.section[data-phase='running'] .track { will-change: transform; animation: crossing 9s cubic-bezier(.25, .15, .75, .85) 1 both; }
+.section[data-phase='running'][data-paused='true'] .track { animation-play-state: paused; }
+.section[data-phase='complete'] .track { transform: translate3d(calc(100% + 24px), 0, 0); visibility: hidden; }
+@keyframes crossing {
+  from { transform: translate3d(calc(-1 * var(--truck-width) - 24px), 0, 0); }
+  to { transform: translate3d(calc(100% + 24px), 0, 0); }
+}
+@media (max-width: 639px) {
+  .section { --truck-width: 86vw; padding-top: 44px; }
+  .heading { padding: 0 20px; }
+  .heading h2 { font-size: clamp(27px, 7.3vw, 34px); }
+  .stage { height: 260px; margin-top: 6px; }
+  .network { width: 155%; max-width: none; height: 100%; top: 32px; }
+  .section[data-phase='running'] .track { animation-duration: 8s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section .network { transition: none; opacity: .65; }
+  .section .track { animation: none !important; transform: translate3d(calc((100% - var(--truck-width)) / 2), 0, 0) !important; visibility: visible !important; }
+}

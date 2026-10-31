@@ -1,4 +1,5 @@
 'use client';
+import { LogisticsAnimation } from '@/components/logistics-animation';
 import LocaleLink from '@/components/locale-link';
 
 import { useLocale } from '@/components/locale';
@@ -62,6 +63,9 @@ export default function Services() {
               );
             })}
           </div>
+        </section>
+        <LogisticsAnimation en={en} />
+        <section className="section">
           <div className="mt-12 rounded-3xl bg-[#1E293B] p-8 text-white sm:flex sm:items-center sm:justify-between sm:p-12">
             <div>
               <h2 className="text-3xl font-bold">
