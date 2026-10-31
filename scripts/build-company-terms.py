@@ -1,9 +1,9 @@
 """Preserve approved Markdown wording in website JSON and branded PDF drafts.
-Source files named {hu,en}-terms.md are rendered verbatim. The user confirmed
-the supplied UK source ends mid-clause 11.2; an editorial note identifies this.
+Source files named {hu,en}-terms.md are rendered verbatim.
+Use --en-only to regenerate only the UK document.
 """
 from pathlib import Path
-import re, json, shutil, hashlib
+import re, json, shutil, hashlib, sys
 from xml.sax.saxutils import escape
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -35,7 +35,7 @@ def parse(source):
         elif chunk.startswith('**Státusz:') or chunk.startswith('**Status:'): doc['status']=plain(chunk)
         elif 'tagline' not in doc: doc['tagline']=plain(chunk)
         elif 'notice' not in doc: doc['notice']=plain(chunk)
-        else: doc['status']=plain(chunk)
+        else: doc.setdefault('closing',[]).append(plain(chunk))
     return doc
 
 def decorate(c,doc,company,locale):
@@ -47,24 +47,26 @@ def decorate(c,doc,company,locale):
     c.setFont('Legal',8);c.setFillColor(colors.HexColor('#e2c892'));c.drawString(99,h-47,'Jogi felülvizsgálatra szánt tervezet' if locale=='hu' else 'Draft for legal review')
     c.setStrokeColor(gold);c.line(42,44,w-42,44);c.setFont('Legal',8);c.setFillColor(navy)
     c.drawString(42,29,company);c.drawRightString(w-42,29,str(doc.page));c.restoreState()
-result={}
-for locale in ['hu','en']:
+en_only='--en-only' in sys.argv
+result=json.loads((ROOT/'data/legal/terms.json').read_text()) if en_only else {}
+for locale in (['en'] if en_only else ['hu','en']):
     src=ROOT/f'data/legal/{locale}-terms.md'
     if not src.exists(): continue
     raw=src.read_text();doc=parse(raw)
     assert doc.get('notice') and len(doc['sections'])>=11, 'Invalid source structure'
-    if locale == 'en': doc['editorialNote']='Preview note (not part of the supplied terms): The supplied text ends with an incomplete sentence in clause 11.2.'
     doc['sourceSha256']=hashlib.sha256(src.read_bytes()).hexdigest()
     filename='eximpworld-kft-aszf-tervezet.pdf' if locale=='hu' else 'eximpworld-ltd-terms-draft.pdf'
     doc['pdf']='/downloads/terms/'+filename
     story=[Paragraph(escape(doc['title']),title),Paragraph(escape(doc['tagline']),heading),Paragraph(escape(doc['notice']),body),Spacer(1,18),Paragraph('Tartalomjegyzék' if locale=='hu' else 'Contents',heading)]
-    if doc.get('editorialNote'): story.insert(3,Paragraph(escape(doc['editorialNote']),small))
     for section in doc['sections']: story.append(Paragraph(f'<link href="#{section["id"]}" color="#2456a0">{escape(section["heading"])}</link>',small))
     story.append(PageBreak())
     for section in doc['sections']:
         story.append(Paragraph(f'<a name="{section["id"]}"/>'+escape(section['heading']),heading))
         for p in section['paragraphs']: story.append(Paragraph(escape(p),body))
     if doc.get('status'): story.extend([Spacer(1,16),Paragraph(escape(doc['status']),small)])
+    if doc.get('closing'):
+        story.append(Spacer(1,16))
+        for p in doc['closing']: story.append(Paragraph(escape(p),small))
     pdf=SimpleDocTemplate(str(OUT/filename),pagesize=(595.28,841.89),leftMargin=46,rightMargin=46,topMargin=86,bottomMargin=62,title=doc['title'],author=doc['company'],subject=doc['notice'])
     draw=lambda c,d:decorate(c,d,doc['company'],locale)
     pdf.build(story,onFirstPage=draw,onLaterPages=draw)

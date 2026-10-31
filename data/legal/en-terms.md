@@ -113,4 +113,118 @@
 
 11.1. Each Party shall be responsible for breach of contract in accordance with applicable law.
 
-11.2. Any limitation of liability shall apply only to
+11.2. Any limitation or exclusion of liability shall apply only to the extent permitted by applicable law and shall not exclude or restrict liability that cannot lawfully be excluded or restricted.
+
+11.3. Nothing in these Terms shall exclude or restrict liability for death or personal injury caused by negligence, fraud, fraudulent misrepresentation or any other liability that cannot lawfully be excluded or restricted.
+
+11.4. Subject to Clauses 11.2 and 11.3, neither Party shall be liable for indirect or consequential losses, including loss of anticipated profits or business opportunities, to the extent that such exclusion is lawful and reasonable in the circumstances.
+
+11.5. Each Party shall take reasonable steps to mitigate losses arising from a breach of contract.
+
+11.6. Any specific financial limitation of liability shall be agreed in writing where appropriate, taking into account the value of the transaction, foreseeable risks and available insurance arrangements.
+
+11.7. Nothing in this Section shall affect the Buyer's obligation to pay the agreed purchase price or either Party's rights and remedies that cannot lawfully be excluded.
+
+### 12. Force Majeure
+
+12.1. Neither Party shall be liable for delay or failure to perform an obligation, other than an accrued payment obligation, to the extent directly caused by an event beyond its reasonable control that could not reasonably have been avoided or overcome.
+
+12.2. Such events may include natural disasters, war, government restrictions, major transport disruptions, industrial action, serious infrastructure failures and other extraordinary circumstances beyond the affected Party's reasonable control.
+
+12.3. The affected Party shall notify the other Party as soon as reasonably practicable, explaining the circumstances, anticipated consequences and expected duration where known.
+
+12.4. The affected Party shall take reasonable steps to minimise disruption and resume performance as soon as reasonably practicable.
+
+12.5. Ordinary commercial difficulties, increased costs or changes in market prices shall not, by themselves, constitute force majeure.
+
+12.6. Where a force majeure event continues for more than 60 consecutive days and materially prevents performance, either Party may terminate the affected part of the contract by written notice.
+
+12.7. Following termination, the Parties shall reasonably reconcile payments, goods already delivered and properly incurred contractual obligations.
+
+### 13. Suspension and Termination
+
+13.1. Either Party may request amendment or cancellation of a confirmed order. Any agreed amendment or cancellation shall be documented in writing.
+
+13.2. Where one Party commits a material breach of contract, the other Party may give written notice describing the breach and requesting that it be remedied within a reasonable period, normally 14 calendar days where the breach is capable of remedy.
+
+13.3. If the material breach is not remedied within the specified reasonable period, the non-defaulting Party may terminate the affected contract by written notice, subject to applicable law.
+
+13.4. Either Party may suspend or terminate performance where continued performance would violate applicable law, sanctions, export controls or mandatory safety requirements.
+
+13.5. The Seller may suspend further deliveries where a payment is materially overdue, provided reasonable written notice is given where practicable.
+
+13.6. Termination shall not affect accrued payment obligations, existing claims or provisions intended to survive termination.
+
+13.7. Neither Party shall be subject to an automatic fixed-percentage cancellation penalty unless such a charge has been expressly agreed and is lawful and enforceable.
+
+### 14. Confidentiality
+
+14.1. Each Party shall treat non-public commercial, financial and technical information received from the other Party in connection with a transaction as confidential where it is identified as confidential or would reasonably be understood to be confidential.
+
+14.2. Confidential information may be used only for evaluating, negotiating or performing the relevant business relationship.
+
+14.3. A Party may disclose confidential information to its employees, professional advisers, insurers, financing providers and relevant contractors where reasonably necessary, subject to appropriate confidentiality safeguards.
+
+14.4. Confidentiality obligations shall not apply to information that is publicly available without breach, independently developed, lawfully received from another source without restriction or required to be disclosed by law.
+
+14.5. Where disclosure is legally required, the disclosing Party shall, where lawful and reasonably practicable, notify the other Party in advance.
+
+14.6. These confidentiality obligations shall continue for three years after completion or termination of the relevant contract, except where applicable law or a separate agreement requires longer protection.
+
+### 15. Notices and Communications
+
+15.1. Quotations, purchase orders, order confirmations, amendments and other commercial communications may be exchanged electronically unless a particular form is required by law or expressly agreed.
+
+15.2. Each Party shall provide accurate business contact details and promptly notify the other Party of material changes.
+
+15.3. Formal contractual notices shall be sent to the contact details designated in the order confirmation or other written agreement.
+
+15.4. An electronic notice shall be treated as received when it reaches the recipient's designated electronic system, provided no delivery failure notification is received, subject to applicable law and any expressly agreed notice procedure.
+
+15.5. Changes to bank account details must be independently verified through a previously established and trusted communication channel before payment is made.
+
+15.6. Neither Party shall be required to rely on unverified instructions requesting changes to payment details.
+
+### 16. Governing Law and Jurisdiction
+
+16.1. Unless otherwise expressly agreed in writing, contracts concluded under these Terms shall be governed by the laws of England and Wales, excluding conflict-of-law rules to the extent permitted by law.
+
+16.2. The courts of England and Wales shall have exclusive jurisdiction over disputes arising from or connected with such contracts, unless the Parties expressly agree another lawful dispute resolution procedure in writing.
+
+16.3. Before commencing formal proceedings, the Parties shall, where reasonably practicable, attempt to resolve disputes through good-faith commercial discussions.
+
+16.4. Nothing in this Section shall prevent either Party from seeking urgent interim or protective relief from a court of competent jurisdiction where legally available.
+
+16.5. The application of the United Nations Convention on Contracts for the International Sale of Goods (CISG), where otherwise applicable, shall be excluded to the extent permitted by law, unless the Parties expressly agree otherwise in writing.
+
+### 17. Final Provisions
+
+17.1. These Terms apply only to transactions in which EximpWorld Ltd is expressly identified as the Seller.
+
+17.2. EximpWorld Ltd and EximpWorld Kft. are separate legal entities. Neither company shall become responsible for the contractual obligations of the other merely because they share branding, a website or business contact infrastructure.
+
+17.3. No amendment to a confirmed contract shall be effective unless agreed in writing by authorised representatives of the relevant Parties.
+
+17.4. If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue to apply to the extent permitted by law.
+
+17.5. Failure or delay by either Party to exercise a contractual right shall not, by itself, constitute a waiver of that right.
+
+17.6. Neither Party may transfer its material contractual obligations to another party without the other Party's prior written consent, such consent not to be unreasonably withheld or delayed, except where otherwise permitted by the contract or applicable law.
+
+17.7. These Terms, together with the relevant quotation, order confirmation and any expressly agreed written amendments, constitute the contractual documentation for the transaction, subject to applicable mandatory law.
+
+17.8. Where there is a conflict between these Terms and an individually negotiated written agreement, the individually negotiated agreement shall prevail.
+
+17.9. The version of these Terms applicable to a transaction shall be the version properly incorporated into the relevant contract at the time of its formation.
+
+17.10. These Terms shall become effective only upon formal approval and publication by EximpWorld Ltd, with an identified effective date.
+
+---
+
+**EXIMPWORLD LTD**
+
+*General Terms & Conditions of Sale and Delivery*
+
+*End of document – Section 17.10*
+
+*Status: Draft for legal review.*

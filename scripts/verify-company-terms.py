@@ -13,6 +13,7 @@ for lang,doc in docs.items():
     assembled=[doc['company'],doc['title'],doc['tagline'],doc['notice']]
     for section in doc['sections']: assembled.extend([section['heading'],*section['paragraphs']])
     if doc.get('status'): assembled.append(doc['status'])
+    assembled.extend(doc.get('closing',[]))
     assert original==norm(' '.join(assembled)), f'{lang}: source changed'
     with pdfplumber.open(root/'public'/doc['pdf'].lstrip('/')) as pdf:
         text=norm(' '.join(page.crop((0,65,page.width,page.height-55)).extract_text() or '' for page in pdf.pages[1:]))
@@ -20,6 +21,7 @@ for lang,doc in docs.items():
             assert norm(section['heading']) in text
             for p in section['paragraphs']: assert norm(p) in text, p
         if doc.get('status'): assert norm(doc['status']) in text
+        for p in doc.get('closing',[]): assert norm(p) in text
         for page in pdf.pages:
             for c in page.chars:
                 assert c['x0']>=0 and c['x1']<=page.width and c['top']>=0 and c['bottom']<=page.height
