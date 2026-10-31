@@ -1,0 +1,13 @@
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; width: 100%; max-width: 1600px; margin-inline: auto; padding: 40px 24px; }
+.grid > div { min-width: 0; }
+.footer .grid p, .footer .grid address { line-height: 1.6; }
+.footer .grid > div > p { margin-top: 12px; }
+.footer .grid > div > :global(.footer-title) { margin-top: 0; margin-bottom: 14px; }
+.footer :global(.footer-link) { margin-top: 8px; }
+.footer :global(.footer-line) { margin-top: 8px; font-size: 14px; overflow-wrap: anywhere; }
+.footer :global(.footer-line) svg { flex-shrink: 0; }
+.grid > div > div { margin-top: 10px; }
+.grid a { overflow-wrap: anywhere; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; padding: 36px 32px; } }
+@media (min-width: 1024px) { .grid { grid-template-columns: 1fr 1.1fr 1.4fr .65fr; gap: 28px; padding: 36px 40px; } }
+@media (min-width: 1440px) { .grid { gap: 40px; } }

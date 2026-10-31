@@ -1,4 +1,5 @@
 'use client';
+import footerStyles from './footer.module.css';
 import { englishContact } from '@/config/english-contact';
 import LocaleLink from '@/components/locale-link';
 import { usePathname } from 'next/navigation';
@@ -147,8 +148,8 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
     ? ['Products', 'Industries', 'Services', 'About', 'Contact']
     : labels[locale].slice(1);
   return (
-    <footer className="bg-[#1E293B] text-slate-300">
-      <div className={`mx-auto grid max-w-[1400px] gap-10 px-5 py-16 lg:px-10 [&>div]:min-w-0 ${en ? "md:grid-cols-2 xl:grid-cols-[1fr_1.2fr_1.2fr_.7fr]" : "md:grid-cols-[1.2fr_.7fr_1.5fr]"}`}>
+    <footer className={`bg-[#1E293B] text-slate-300 ${footerStyles.footer}`}>
+      <div className={footerStyles.grid}>
         <div>
           <Brand inverted />
           <p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">
@@ -178,25 +179,19 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
             ].map(([name, role, email]) => <div key={email}><p className="font-semibold text-white">{name}</p><p className="text-slate-400">{role}</p><a className="break-words hover:text-white" href={`mailto:${email}`}>{email}</a></div>)}
           </div>
         </>}
-        <div>
-          <h3 className="footer-title">
-            {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
-          </h3>
-          {footerLinks.map((x, i) => (
-            <LocaleLink className="footer-link" href={x} key={x}>
-              {footerLabels[i]}
-            </LocaleLink>
-          ))}
-        </div>
-        {!en && <div>
-          <h3 className="footer-title">
-            {locale === 'hu' ? 'Kapcsolat' : 'Contact'}
-          </h3>
+        {!en && <>
           <div className="space-y-3 text-sm leading-6">
+            <h3 className="footer-title">Céginformációk</h3>
             <p className="font-semibold text-white">EximpWorld Kft.</p>
             <p>Cégjegyzékszám: 01-09-471262<br />Adószám: 33142777-2-43<br />Közösségi adószám: HU33142777</p>
-            <div><p className="font-medium text-white">Bejegyzett székhely</p><address className="not-italic">1183 Budapest, Szegfű utca 9.</address></div>
             <p>Ügyvezető: Pálóczi Bence</p>
+          </div>
+          <div>
+          <h3 className="footer-title">
+            Címek és elérhetőségek
+          </h3>
+          <div className="space-y-3 text-sm leading-6">
+            <div><p className="font-medium text-white">Bejegyzett székhely</p><address className="not-italic">1183 Budapest, Szegfű utca 9.</address></div>
             <div><p className="font-medium text-white">Üzleti iroda</p><address className="not-italic">Andrássy Palace, 1061 Budapest, Andrássy út 9.</address></div>
             <div><p className="font-medium text-white">Depo / raktári kapcsolattartás</p><address className="not-italic">1097 Budapest, Kén utca 8.</address></div>
           </div>
@@ -233,10 +228,20 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
           {company.vat && (
             <p className="footer-line">VAT: {company.vat}</p>
           )}
-        </div>}
+        </div></>}
+        <div>
+          <h3 className="footer-title">
+            {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
+          </h3>
+          {footerLinks.map((x, i) => (
+            <LocaleLink className="footer-link" href={x} key={x}>
+              {footerLabels[i]}
+            </LocaleLink>
+          ))}
+        </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-3 px-5 py-5 text-[11px] text-slate-500 lg:px-10">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-3 px-5 py-3 text-[11px] text-slate-500 lg:px-10">
           <span>
             © {new Date().getFullYear()} {companyName}{' '}
             {locale === 'hu'
