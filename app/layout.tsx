@@ -52,8 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const englishTitles: Record<string, string> = {
     '/': 'Chemical Raw Materials', '/termekek': 'Product Catalogue', '/szolgaltatasok': 'Services', '/rolunk': 'About us', '/kapcsolat': 'Contact and Quotation', '/iparagak': 'Industries', '/adatvedelem': 'Privacy Policy', '/sutik': 'Cookie Policy', '/aszf': 'Terms & Conditions'
   };
-  const title = locale === 'en' ? `${huProduct?.en || englishTitles[path] || 'Chemical Supply Services'} | EximpWorld Hungary` : originalTitle;
-  const description = locale === 'en' ? (huProduct ? `${huProduct.en} – technical information, documentation and individual B2B quotations.` : 'Strategic raw material supply and reliable industrial partnerships through direct international manufacturer relationships.') : originalDescription;
+  const title = locale === 'en' && path === '/rolunk' ? 'About EXIM WORLD LTD | EximpWorld' : locale === 'en' ? `${huProduct?.en || englishTitles[path] || 'Chemical Supply Services'} | EximpWorld Hungary` : originalTitle;
+  const description = locale === 'en' && path === '/rolunk' ? 'EXIM WORLD LTD is a privately owned, UK-registered trading company specialising in the international sourcing and supply of chemical raw materials for industrial and manufacturing businesses.' : locale === 'en' ? (huProduct ? `${huProduct.en} – technical information, documentation and individual B2B quotations.` : 'Strategic raw material supply and reliable industrial partnerships through direct international manufacturer relationships.') : originalDescription;
   const incompleteLegal = [
     '/privacy-policy',
     '/cookie-policy',

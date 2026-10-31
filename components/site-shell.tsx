@@ -136,7 +136,7 @@ export function Brand({ inverted = false }: { inverted?: boolean }) {
     </LocaleLink>
   );
 }
-export function Footer() {
+export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
   const { locale, market } = useLocale();
   const company = locale === 'en' ? englishContact : market.company;
   const uk = market.id === 'uk';
@@ -203,7 +203,7 @@ export function Footer() {
               </LocaleLink>
             </p>
           )}
-          {company.phone && (
+          {!hidePhone && company.phone && (
             <p className="footer-line">
               <Phone size={15} />
               <LocaleLink href={`tel:${company.phone.replace(/\s/g, '')}`}>

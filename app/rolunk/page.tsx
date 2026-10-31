@@ -1,5 +1,6 @@
 'use client';
 
+import { EnglishAbout } from '@/components/english-about';
 import { AboutTeam } from '@/components/about-team';
 import { useLocale } from '@/components/locale';
 import { Footer, Header, PageIntro } from '@/components/site-shell';
@@ -22,6 +23,7 @@ const values = {
 export default function About() {
   const { locale } = useLocale();
   const en = locale === 'en';
+  if (en) return <EnglishAbout />;
 
   return (
     <>
