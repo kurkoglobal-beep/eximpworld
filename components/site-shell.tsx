@@ -25,11 +25,11 @@ export function Header() {
   const { locale, market } = useLocale();
   const uk = market.id === 'uk';
   const navLinks = uk
-    ? ['/', '/products', '/industries', '/services', '/about', '/contact']
-    : links;
+    ? ['/', '/products', '/industries', '/services', '/about', '/contact', '/karrier']
+    : [...links, '/karrier'];
   const navLabels = uk
-    ? ['Home', 'Products', 'Industries', 'Services', 'About', 'Contact']
-    : labels[locale];
+    ? ['Home', 'Products', 'Industries', 'Services', 'About', 'Contact', 'Careers']
+    : [...labels[locale], locale === 'hu' ? 'Karrier' : 'Careers'];
   const pathname = usePathname();
   const path = languageRoute(pathname)?.hu || pathname;
   const [open, setOpen] = useState(false);
