@@ -1,23 +1,43 @@
 .page { color: #182538; background: #fff; }
-.inner { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
-.hero { padding: 90px 0 76px; background: #182538; color: white; }
-.hero h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.12; letter-spacing: -.04em; font-weight: 600; margin-bottom: 28px; }
-.page p { font-size: 17px; line-height: 1.85; margin-top: 18px; max-width: 920px; }
-.hero p { color: #dce4ef; }
-.hero p:first-of-type { color: #dec28a; font-size: clamp(20px, 2.5vw, 27px); font-weight: 600; margin-bottom: 32px; }
-.section { padding: 76px 0; }
-.section:nth-of-type(even) { background: #f5f7fa; }
-.section h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 28px; }
-.section h2::before { content: ''; display: block; width: 48px; height: 3px; background: #c4a66b; margin-bottom: 24px; }
+.inner { width: min(1320px, calc(100% - 80px)); margin-inline: auto; }
+.hero { position: relative; isolation: isolate; overflow: hidden; background: #102438; color: white; padding: 64px 0; }
+.heroImage { position: absolute; z-index: -1; inset: 0 0 0 40%; }
+.heroImage img { object-fit: cover; object-position: 66% center; }
+.heroImage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #102438 0%, #102438d9 20%, #10243838 65%, #10243810), linear-gradient(0deg, #10243880, transparent 35%); }
+.heroCopy { width: 66%; max-width: 820px; }
+.heroCopy::before { content: ''; display: block; width: 48px; height: 3px; background: #dec28a; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(34px, 3.5vw, 52px); line-height: 1.12; letter-spacing: -.04em; font-weight: 600; margin-bottom: 22px; }
+.hero p, .section p { font-size: 16px; line-height: 1.75; margin-top: 16px; }
+.hero p { color: #e3eaf2; max-width: 690px; }
+.hero p:first-of-type { color: #dec28a; font-size: clamp(18px, 1.7vw, 24px); font-weight: 600; line-height: 1.45; margin-bottom: 24px; }
+.section { padding: 60px 0; }
+.section:nth-of-type(odd) { background: #f4f7fb; }
+.section h2 { font-size: clamp(28px, 2.7vw, 38px); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 24px; }
+.section h2::before { content: ''; display: block; width: 42px; height: 2px; background: #c4a66b; margin-bottom: 20px; }
 .section p { color: #526174; }
-.section > .inner > p:first-of-type { font-weight: 600; color: #182538; }
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.card { padding: 32px; border: 1px solid #e1e6ed; border-radius: 18px; box-shadow: 0 8px 24px #18253806; }
-.page h3 { font-size: 22px; line-height: 1.4; font-weight: 600; }
-.company { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.company address { font-style: normal; line-height: 1.85; margin-top: 18px; color: #526174; }
+.section > .inner > p:first-of-type, .partnershipCopy > p:first-of-type { font-weight: 600; color: #182538; }
+.partnership { padding: 48px 0; background: #fff; }
+.partnershipGrid { display: grid; grid-template-columns: .9fr 1.3fr; gap: 48px; align-items: center; }
+.city { min-width: 0; margin: 0; }
+.cityImage { position: relative; aspect-ratio: 4 / 4.3; overflow: hidden; border-radius: 16px; box-shadow: 0 18px 45px #10243814; }
+.cityImage img { object-fit: cover; object-position: 65% center; }
+.city figcaption { font-size: 11px; line-height: 1.5; color: #66768b; margin-top: 10px; }
+.city figcaption a { text-decoration: underline; text-underline-offset: 2px; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.card { padding: 26px 22px; border: 1px solid #e4eaf2; background: white; border-radius: 14px; box-shadow: 0 8px 30px #18253806; transition: transform .25s ease, box-shadow .25s ease; }
+.serviceIcon { color: #2864d8; margin-bottom: 22px; }
+.card h3 { font-size: 19px; line-height: 1.4; font-weight: 600; letter-spacing: -.02em; }
+.card p { font-size: 14px; line-height: 1.75; margin-top: 14px; }
+.company { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.company > div { background: white; border: 1px solid #e1e6ed; border-radius: 16px; padding: 28px 32px; min-width: 0; }
+.company h3 { font-size: 21px; font-weight: 600; }
+.company address { font-style: normal; line-height: 1.75; margin-top: 16px; color: #526174; }
 .company a { text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
-.section:last-child { background: #182538; color: white; }
+.section:last-child { background: linear-gradient(110deg, #102438, #1e3450); color: white; }
 .section:last-child p { color: #dce4ef; }
-.section:last-child a { margin-top: 28px; }
-@media (max-width: 640px) { .inner { width: calc(100% - 36px); } .hero { padding: 54px 0; } .section { padding: 48px 0; } .page p { font-size: 16px; } .cards, .company { grid-template-columns: 1fr; } .card { padding: 24px; } }
+.section:last-child a { margin-top: 24px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px #18253812; } }
+@media (prefers-reduced-motion: no-preference) { .heroCopy { animation: enter .65s ease-out both; } @keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } } }
+@media (max-width: 1100px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .heroCopy { width: 76%; } .partnershipGrid { gap: 30px; grid-template-columns: .8fr 1.2fr; } }
+@media (max-width: 767px) { .inner { width: calc(100% - 36px); } .hero { padding: 0 0 36px; display: flex; flex-direction: column; } .heroImage { position: relative; inset: auto; height: 240px; z-index: 0; order: 2; margin-top: 24px; } .heroImage::after { background: linear-gradient(180deg, #102438, transparent 45%, #10243870); } .hero > .inner { padding-top: 40px; } .heroCopy { width: 100%; } .hero h1 { font-size: 36px; } .section { padding: 42px 0; } .partnershipGrid, .company { grid-template-columns: 1fr; gap: 28px; } .cityImage { aspect-ratio: 4 / 3; } .cards { gap: 14px; } .card { padding: 22px 18px; } .company > div { padding: 24px; } }
+@media (max-width: 479px) { .cards { grid-template-columns: 1fr; } }

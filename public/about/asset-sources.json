@@ -1,0 +1,16 @@
+{
+  "chemical-sourcing.webp": {
+    "type": "AI-generated editorial illustration",
+    "tool": "built-in image_gen",
+    "prompt": "Create a premium photorealistic editorial chemical industry illustration for the right half of a navy corporate website hero. Wide landscape 3:2. Close-up immaculate transparent laboratory glass flask holding clear liquid, a blue nitrile gloved hand entering from right holding neck, subtle out-of-focus metallic industrial pipework and cool glass reflections behind. Tight detail, no identifiable factory, no buildings, no corporate branding, no text, no logos, no people faces. Palette deep navy, steel blue and restrained warm gold light. Main flask and hand on right half, dark negative space left blending smoothly into #102438. High-end realistic commercial still life, sharp glass, natural proportions. This is a generic chemical sourcing concept, not a representation of any company's owned plant. Save image for use as optimized website hero asset.",
+    "processing": "Resized to 1440px wide and compressed to WebP quality 84"
+  },
+  "winchester.webp": {
+    "title": "Winchester Cathedral",
+    "author": "M J Richardson",
+    "source": "https://commons.wikimedia.org/wiki/File:Winchester_Cathedral_-_geograph.org.uk_-_5612872.jpg",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "processing": "Resized to 1200px wide, converted to WebP; display cropped with CSS object-fit. Derived image remains CC BY-SA 2.0."
+  }
+}
