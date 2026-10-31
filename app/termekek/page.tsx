@@ -129,7 +129,7 @@ export default function Products() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((product) => {
-              if (en) return <EnglishProductCard key={product.cas} product={product} />;
+              if (en) return <EnglishProductCard key={product.hu} product={product} />;
               const details = productDetails(product, en);
               return (
                 <LocaleLink
