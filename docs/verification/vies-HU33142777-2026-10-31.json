@@ -1,0 +1,19 @@
+{
+  "countryCode" : "HU",
+  "vatNumber" : "33142777",
+  "requestDate" : "2026-10-31T08:55:35.118Z",
+  "valid" : true,
+  "requestIdentifier" : "",
+  "name" : "EXIMPWORLD KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG",
+  "address" : "SZEGFU UTCA 9 1183 BUDAPEST",
+  "traderName" : "---",
+  "traderStreet" : "---",
+  "traderPostalCode" : "---",
+  "traderCity" : "---",
+  "traderCompanyType" : "---",
+  "traderNameMatch" : "NOT_PROCESSED",
+  "traderStreetMatch" : "NOT_PROCESSED",
+  "traderPostalCodeMatch" : "NOT_PROCESSED",
+  "traderCityMatch" : "NOT_PROCESSED",
+  "traderCompanyTypeMatch" : "NOT_PROCESSED"
+}

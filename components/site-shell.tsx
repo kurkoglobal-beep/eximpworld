@@ -1,12 +1,10 @@
 'use client';
 import { englishContact } from '@/config/english-contact';
-import { translatedTerm } from '@/lib/language';
 import LocaleLink from '@/components/locale-link';
 import { usePathname } from 'next/navigation';
 import {
   ChevronDown,
   Mail,
-  MapPin,
   Menu,
   Phone,
   Search,
@@ -139,6 +137,8 @@ export function Brand({ inverted = false }: { inverted?: boolean }) {
 export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
   const { locale, market } = useLocale();
   const company = locale === 'en' ? englishContact : market.company;
+  const en = locale === 'en';
+  const companyName = en ? 'EXIM WORLD LTD' : 'EximpWorld Kft.';
   const uk = market.id === 'uk';
   const footerLinks = uk
     ? ['/products', '/industries', '/services', '/about', '/contact']
@@ -148,7 +148,7 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
     : labels[locale].slice(1);
   return (
     <footer className="bg-[#1E293B] text-slate-300">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
+      <div className={`mx-auto grid max-w-[1400px] gap-10 px-5 py-16 lg:px-10 [&>div]:min-w-0 ${en ? "md:grid-cols-2 xl:grid-cols-[1fr_1.2fr_1.2fr_.7fr]" : "md:grid-cols-[1.2fr_.7fr_1.5fr]"}`}>
         <div>
           <Brand inverted />
           <p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">
@@ -156,14 +156,28 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
               ? 'Megbízható vegyipari alapanyag-ellátás dokumentált minőséggel és pontos logisztikával.'
               : 'Reliable chemical raw material supply with documented quality and precise logistics.'}
           </p>
-          <div className="mt-6 flex gap-2">
-            <span className="cert">
-              {uk ? 'UK REACH information' : 'REACH'}
-            </span>
-            <span className="cert">{uk ? 'ADR where applicable' : 'ADR'}</span>
-            {!uk && <span className="cert">ISO</span>}
-          </div>
+          <p className="mt-6 text-sm leading-6 text-slate-400">
+            {en ? 'Support with applicable REACH documentation. ADR transport coordinated with logistics partners where required and available.' : 'Segítség a vonatkozó REACH-dokumentáció beszerzésében. ADR-szállítás szervezése logisztikai partnerekkel, szükség és elérhetőség szerint.'}
+          </p>
         </div>
+        {en && <>
+          <div className="space-y-4 text-sm leading-6">
+            <h3 className="footer-title">Company Information</h3>
+            <p className="font-semibold text-white">EXIM WORLD LTD</p>
+            <p>Company No. 16526371<br />Registered in England and Wales</p>
+            <div><p className="font-medium text-white">Registered Office</p><address className="not-italic">BM Centre, 11 St. Martins Close, Winchester, SO23 0HD, United Kingdom</address></div>
+            <a className="block underline underline-offset-4 hover:text-white" href="https://find-and-update.company-information.service.gov.uk/company/16526371" target="_blank" rel="noopener noreferrer">Verify on Companies House</a>
+            <a className="block break-words hover:text-white" href="mailto:sales@eximpworld.co.uk">sales@eximpworld.co.uk</a>
+          </div>
+          <div className="space-y-5 text-sm leading-6">
+            <h3 className="footer-title">Our Team / Direct Contacts</h3>
+            {[
+              ['Harper Wilson', 'Customer Service Representative', 'harper.uk@eximpworld.hu'],
+              ['Oliver Patel', 'Customs & Compliance Administrator', 'oliver.uk@eximpworld.hu'],
+              ['Thomas Taylor', 'Logistics & Supply Chain Specialist', 'thomas.uk@eximpworld.hu'],
+            ].map(([name, role, email]) => <div key={email}><p className="font-semibold text-white">{name}</p><p className="text-slate-400">{role}</p><a className="break-words hover:text-white" href={`mailto:${email}`}>{email}</a></div>)}
+          </div>
+        </>}
         <div>
           <h3 className="footer-title">
             {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
@@ -174,18 +188,18 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
             </LocaleLink>
           ))}
         </div>
-        <div>
+        {!en && <div>
           <h3 className="footer-title">
             {locale === 'hu' ? 'Kapcsolat' : 'Contact'}
           </h3>
-          <p className="footer-line">
-            <MapPin size={15} />{' '}
-            <span>
-              {company.name}
-              <br />
-              {company.address.map(x => translatedTerm(x, locale === 'en')).join(', ')}
-            </span>
-          </p>
+          <div className="space-y-3 text-sm leading-6">
+            <p className="font-semibold text-white">EximpWorld Kft.</p>
+            <p>Cégjegyzékszám: 01-09-471262<br />Adószám: 33142777-2-43<br />Közösségi adószám: HU33142777</p>
+            <div><p className="font-medium text-white">Bejegyzett székhely</p><address className="not-italic">1183 Budapest, Szegfű utca 9.</address></div>
+            <p>Ügyvezető: Pálóczi Bence</p>
+            <div><p className="font-medium text-white">Üzleti iroda</p><address className="not-italic">Andrássy Palace, 1061 Budapest, Andrássy út 9.</address></div>
+            <div><p className="font-medium text-white">Depo / raktári kapcsolattartás</p><address className="not-italic">1097 Budapest, Kén utca 8.</address></div>
+          </div>
           {[
             [locale === 'hu' ? 'Központi e-mail' : 'Central email', company.centralEmail],
             [locale === 'hu' ? 'Depo/Raktár' : 'Depot/Warehouse', company.depotEmail],
@@ -219,12 +233,12 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
           {company.vat && (
             <p className="footer-line">VAT: {company.vat}</p>
           )}
-        </div>
+        </div>}
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-3 px-5 py-5 text-[11px] text-slate-500 lg:px-10">
           <span>
-            © {new Date().getFullYear()} {company.name}.{' '}
+            © {new Date().getFullYear()} {companyName}{' '}
             {locale === 'hu'
               ? 'Minden jog fenntartva.'
               : 'All rights reserved.'}
