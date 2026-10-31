@@ -4,7 +4,6 @@ import { englishContact } from '@/config/english-contact';
 import LocaleLink from '@/components/locale-link';
 import { usePathname } from 'next/navigation';
 import {
-  ChevronDown,
   Mail,
   Menu,
   Phone,
@@ -23,7 +22,7 @@ const labels = {
 };
 const links = ['/', '/rolunk', '/szolgaltatasok', '/termekek', '/kapcsolat'];
 export function Header() {
-  const { locale, toggle, market } = useLocale();
+  const { locale, market } = useLocale();
   const uk = market.id === 'uk';
   const navLinks = uk
     ? ['/', '/products', '/industries', '/services', '/about', '/contact']
@@ -69,14 +68,6 @@ export function Header() {
               <Search size={18} />
             </LocaleLink>
             <MarketSwitcher />
-            {!uk && (
-              <button
-                onClick={toggle}
-                className="hidden h-10 items-center gap-1 px-2 text-xs font-bold text-slate-600 sm:flex"
-              >
-                {locale.toUpperCase()} <ChevronDown size={13} />
-              </button>
-            )}
             <LocaleLink
               href={marketPath('/kapcsolat', market.id)}
               className="hidden rounded-lg bg-[#2563EB] px-5 py-3 text-xs font-bold text-white sm:block"
@@ -106,14 +97,7 @@ export function Header() {
                 {navLabels[i]}
               </LocaleLink>
             ))}
-            {!uk && (
-              <button
-                onClick={toggle}
-                className="mt-4 text-xs font-bold text-[#2563EB]"
-              >
-                HU / EN
-              </button>
-            )}
+
           </nav>
         )}
       </header>
@@ -168,10 +152,11 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
             <p>Company No. 16526371<br />Registered in England and Wales</p>
             <div><p className="font-medium text-white">Registered Office</p><address className="not-italic">BM Centre, 11 St. Martins Close, Winchester, SO23 0HD, United Kingdom</address></div>
             <a className="block underline underline-offset-4 hover:text-white" href="https://find-and-update.company-information.service.gov.uk/company/16526371" target="_blank" rel="noopener noreferrer">Verify on Companies House</a>
-            <a className="block break-words hover:text-white" href="mailto:sales@eximpworld.co.uk">sales@eximpworld.co.uk</a>
+            <a className="block break-words hover:text-white" href="mailto:eximpworldltd@eximpworld.hu">eximpworldltd@eximpworld.hu</a>
           </div>
           <div className="space-y-5 text-sm leading-6">
             <h3 className="footer-title">Our Team / Direct Contacts</h3>
+            <div><p className="font-semibold text-white">Ernő Demus</p><p>UK Business Manager</p><a className="block break-words" href="mailto:eximpworldltd@eximpworld.hu">eximpworldltd@eximpworld.hu</a><a className="block" href="tel:+447479946016">07479 946016</a><a className="block" href="https://wa.me/447479946016" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div>
             {[
               ['Harper Wilson', 'Customer Service Representative', 'harper.uk@eximpworld.hu'],
               ['Oliver Patel', 'Customs & Compliance Administrator', 'oliver.uk@eximpworld.hu'],
@@ -233,6 +218,7 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
           <h3 className="footer-title">
             {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
           </h3>
+          <LocaleLink className="footer-link" href="/karrier">{en ? 'Careers' : 'Karrier'}</LocaleLink>
           {footerLinks.map((x, i) => (
             <LocaleLink className="footer-link" href={x} key={x}>
               {footerLabels[i]}
@@ -252,7 +238,7 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
             {[
               ['/adatvedelem', locale === 'en' ? 'Privacy Policy' : 'Adatvédelem'],
               ['/sutik', locale === 'en' ? 'Cookie Policy' : 'Sütik'],
-              ['/aszf', locale === 'en' ? 'Terms & Conditions' : 'ÁSZF'],
+              ['/aszf', locale === 'en' ? 'General Terms & Conditions' : 'ÁSZF'],
             ].map(([path, label]) => (
               <LocaleLink key={path} href={marketPath(path, market.id)}>
                 {label}

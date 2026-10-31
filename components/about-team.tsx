@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './about-team.module.css';
 
 const team = [
-  { name: 'Ernő Demus', role: 'Director', email: 'erno.uk@eximpworld.hu', image: 'erno-demus' },
+  { name: 'Ernő Demus', role: 'UK Business Manager', email: 'eximpworldltd@eximpworld.hu', image: 'erno-demus' },
   { name: 'Harper Wilson', role: 'Customer Service Representative', email: 'harper.uk@eximpworld.hu', image: 'harper-wilson' },
   { name: 'Oliver Patel', role: 'Customs & Compliance Administrator', email: 'oliver.uk@eximpworld.hu', image: 'oliver-patel' },
   { name: 'Thomas Taylor', role: 'Logistics & Supply Chain Specialist', email: 'thomas.uk@eximpworld.hu', image: 'thomas-taylor' },

@@ -1,0 +1,14 @@
+.selector{position:relative;color:#10283f;flex-shrink:0}
+.selector summary{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid #d6bd83;border-radius:10px;background:linear-gradient(130deg,#fff,#f6f8fc);cursor:pointer;list-style:none;min-height:48px;box-shadow:0 3px 12px #122b4410}
+.selector summary::-webkit-details-marker{display:none}
+.selector summary:focus-visible,.options a:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+.caption{display:block;color:#86682c;font-size:10px;letter-spacing:.08em;line-height:1.4}
+.selector strong{display:block;font-size:12px;line-height:1.5;white-space:nowrap}
+.flag{font-size:21px;line-height:1.2}.arrow{margin-left:4px;color:#86682c}
+.options{position:absolute;right:0;top:calc(100% + 10px);width:300px;max-width:calc(100vw - 24px);padding:10px;background:white;border:1px solid #dbe3ee;border-top:3px solid #c8a660;border-radius:12px;box-shadow:0 18px 48px #10283f26;z-index:60}
+.options p{font-size:11px;color:#64748b;padding:5px 10px 9px}
+.options a{display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:8px;min-height:64px}
+.options a>span:last-child{margin-left:auto;color:#987739}
+.options a:hover,.options a[aria-current=true]{background:#eef3fa}
+.options small{display:block;font-size:12px;color:#64748b;margin-top:2px}
+@media(max-width:380px){.selector summary{gap:6px;padding:7px 8px}.selector strong{font-size:11px}.flag{font-size:18px}.arrow{margin-left:0}.options{right:-45px}}

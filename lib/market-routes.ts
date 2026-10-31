@@ -17,6 +17,7 @@ const pairs: [string, string][] = [
   ['/adatvedelem', '/privacy-policy'],
   ['/sutik', '/cookie-policy'],
   ['/aszf', '/terms-and-conditions'],
+  ['/karrier', '/careers'],
   ...products.map(
     (p) =>
       [`/termekek/${productSlug(p)}`, `/products/${englishSlug(p.en)}`] as [

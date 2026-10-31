@@ -54,7 +54,7 @@ export function RFQForm() {
     setStatus('');
     const data = {
       ...Object.fromEntries(new FormData(form)),
-      market: market.id,
+      market: en ? 'uk' : 'hu',
       companyRecipient: company.name,
       productName: selected?.name || product,
     };
@@ -302,7 +302,7 @@ export function RFQForm() {
               <LocaleLink
                 className="text-link"
                 href={download}
-                download={`EximpWorld-${market.id}-RFQ.txt`}
+                download={`EximpWorld-${en ? 'uk' : 'hu'}-RFQ.txt`}
               >
                 {en ? 'Download request' : 'Ajánlatkérés letöltése'}
               </LocaleLink>

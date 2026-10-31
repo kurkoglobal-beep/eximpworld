@@ -1,11 +1,13 @@
 'use client';
-import { translatedTerm } from '@/lib/language';
+import { companies } from '@/config/companies';
+import { markets } from '@/config/markets';
 import { usePathname } from 'next/navigation';
 import { useLocale } from './locale';
 import { PageIntro } from './site-shell';
 export function LegalPageContent() {
   const { market, locale } = useLocale();
   const en = locale === 'en';
+  const company = companies[locale];
   const path = usePathname();
   const kind =
     path.includes('cookie') || path.includes('sutik')
@@ -16,7 +18,7 @@ export function LegalPageContent() {
   const title = en
     ? {
         cookies: 'Cookie Policy',
-        terms: 'Terms & Conditions',
+        terms: 'General Terms & Conditions',
         privacy: 'Privacy Policy',
       }[kind]
     : {
@@ -24,22 +26,22 @@ export function LegalPageContent() {
         terms: 'Általános szerződési feltételek',
         privacy: 'Adatkezelési tájékoztató',
       }[kind];
-  const approved = market.legal[kind];
+  const approved = (en ? markets.uk : market).legal[kind];
   return (
     <>
       <PageIntro
-        eyebrow={market.company.name}
+        eyebrow={company.name}
         title={title}
         copy={
           en
-            ? 'Information for visitors to the Hungarian website.'
+            ? 'Company information for EXIM WORLD LTD.'
             : 'Tájékoztatás a magyar weboldal látogatóinak.'
         }
       />
       <section className="section">
         <article className="uk-card max-w-4xl mx-auto">
-          <h2>{market.company.name}</h2>
-          <p>{market.company.address.map(x => translatedTerm(x, en)).join(', ')}</p>
+          <h2>{company.name}</h2>
+          <p>{company.address}</p>
           {approved ? (
             approved.map((paragraph, i) => <p key={i}>{paragraph}</p>)
           ) : (
@@ -86,12 +88,8 @@ export function LegalPageContent() {
                 </>
               ) : (
                 <>
-                  <h3>{en ? 'B2B enquiries' : 'B2B megkeresések'}</h3>
-                  <p>
-                    {en
-                      ? 'This website supports sourcing enquiries. Product availability, specifications, packaging, prices and delivery arrangements require an individual quotation and confirmation. The planning calculator produces volume estimates, not a binding commercial offer.'
-                      : 'A weboldal beszerzési megkereséseket támogat. Az elérhetőség, specifikáció, kiszerelés, ár és szállítás egyedi ajánlatot és visszaigazolást igényel. A tervező kalkulációja nem kötelező kereskedelmi ajánlat.'}
-                  </p>
+                  <h3>{en ? 'Document awaiting approval' : 'Jóváhagyásra váró dokumentum'}</h3>
+                  <p>{en ? 'The General Terms & Conditions of EXIM WORLD LTD are being prepared and require separate approval. No contractual terms are published on this page.' : 'Az EximpWorld Kft. Általános szerződési feltételei előkészítés alatt állnak, és külön jóváhagyást igényelnek. Ezen az oldalon nem teszünk közzé szerződéses feltételeket.'}</p>
                 </>
               )}
               <div className="mt-8 border-t border-slate-200 pt-6">

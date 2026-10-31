@@ -50,9 +50,9 @@ export async function generateMetadata(): Promise<Metadata> {
       : `${huProduct?.hu || product.name} – műszaki adatok, dokumentáció és egyedi B2B ajánlatkérés.`
     : market.seo.description;
   const englishTitles: Record<string, string> = {
-    '/': 'Chemical Raw Materials', '/termekek': 'Product Catalogue', '/szolgaltatasok': 'Services', '/rolunk': 'About us', '/kapcsolat': 'Contact and Quotation', '/iparagak': 'Industries', '/adatvedelem': 'Privacy Policy', '/sutik': 'Cookie Policy', '/aszf': 'Terms & Conditions'
+    '/': 'Chemical Raw Materials', '/termekek': 'Product Catalogue', '/szolgaltatasok': 'Services', '/rolunk': 'About us', '/kapcsolat': 'Contact and Quotation', '/iparagak': 'Industries', '/adatvedelem': 'Privacy Policy', '/sutik': 'Cookie Policy', '/aszf': 'General Terms & Conditions', '/karrier': 'Careers'
   };
-  const title = locale === 'en' && path === '/rolunk' ? 'About EXIM WORLD LTD | EximpWorld' : locale === 'en' ? `${huProduct?.en || englishTitles[path] || 'Chemical Supply Services'} | EximpWorld Hungary` : originalTitle;
+  const title = locale === 'en' && path === '/rolunk' ? 'About EXIM WORLD LTD | EximpWorld' : locale === 'en' ? `${huProduct?.en || englishTitles[path] || 'Chemical Supply Services'} | EXIM WORLD LTD` : originalTitle;
   const description = locale === 'en' && path === '/rolunk' ? 'EXIM WORLD LTD is a privately owned, UK-registered trading company specialising in the international sourcing and supply of chemical raw materials for industrial and manufacturing businesses.' : locale === 'en' ? (huProduct ? `${huProduct.en} – technical information, documentation and individual B2B quotations.` : 'Strategic raw material supply and reliable industrial partnerships through direct international manufacturer relationships.') : originalDescription;
   const incompleteLegal = [
     '/privacy-policy',
@@ -61,6 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
     '/adatvedelem',
     '/sutik',
     '/aszf',
+    '/karrier',
   ].includes(path);
   return {
     metadataBase: new URL(`https://${market.domain}`),
