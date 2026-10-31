@@ -12,5 +12,17 @@
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
     "processing": "Resized to 1200px wide, converted to WebP; display cropped with CSS object-fit. Derived image remains CC BY-SA 2.0."
+  },
+  "industry-reference.webp": {
+    "source": "User supplied: Chemical Excellence Meets Winchester Heritage.png",
+    "tool": "built-in image_gen",
+    "prompt": "Extract only the LEFT chemical still-life panel as a standalone landscape 3:2 image. Remove all overlaid text and gold divider rules; reconstruct the background beneath. Preserve the supplied composition, objects, architecture, lighting and colors faithfully. No text, logos, border, UI, split screen or other panel.",
+    "processing": "Resized and WebP optimized for the English About page only."
+  },
+  "heritage-reference.webp": {
+    "source": "User supplied: Chemical Excellence Meets Winchester Heritage.png",
+    "tool": "built-in image_gen",
+    "prompt": "Extract only the RIGHT cathedral and cityscape panel as a standalone landscape 3:2 image. Remove all overlaid text and gold divider rules; reconstruct the background beneath. Preserve the supplied composition, objects, architecture, lighting and colors faithfully. No text, logos, border, UI, split screen or other panel.",
+    "processing": "Resized and WebP optimized for the English About page only."
   }
 }

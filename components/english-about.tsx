@@ -8,7 +8,7 @@ import styles from './english-about.module.css';
 export function EnglishAbout() {
   return <><Header /><main className={styles.page}>
 <section className={styles.hero}>
-  <div className={styles.heroImage} aria-hidden="true"><Image src="/about/chemical-sourcing.webp" alt="" fill priority sizes="(max-width: 767px) 100vw, 60vw" /></div>
+  <div className={styles.heroImage} aria-hidden="true"><Image src="/about/industry-reference.webp" alt="" fill priority sizes="(max-width: 767px) 100vw, 60vw" /></div>
   <div className={styles.inner}><div className={styles.heroCopy}><h1>About EXIM WORLD LTD</h1><p>International Chemical Sourcing. Personal Commitment.</p>
 <p>EXIM WORLD LTD is a privately owned, UK-registered trading company specialising in the international sourcing and supply of chemical raw materials for industrial and manufacturing businesses.</p>
 <p>Established in Winchester, England, in June 2025, the company operates through a business partnership between Ernő Demus and Tivadar Pálóczi.</p>
@@ -16,8 +16,7 @@ export function EnglishAbout() {
 <p>Our business philosophy is built on transparency, direct communication and personal accountability.</p></div></div></section>
 <section className={`${styles.section} ${styles.partnership}`}><div className={`${styles.inner} ${styles.partnershipGrid}`}>
   <figure className={styles.city}>
-    <div className={styles.cityImage}><Image src="/about/winchester.webp" alt="Winchester Cathedral and the surrounding city in England" fill sizes="(max-width: 767px) 100vw, 40vw" /></div>
-    <figcaption><a href="https://commons.wikimedia.org/wiki/File:Winchester_Cathedral_-_geograph.org.uk_-_5612872.jpg" target="_blank" rel="noopener noreferrer">Winchester Cathedral — M J Richardson</a> · <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> · resized &amp; cropped</figcaption>
+    <div className={styles.cityImage}><Image src="/about/heritage-reference.webp" alt="Cathedral and cityscape illustration from the supplied visual reference" fill sizes="(max-width: 767px) 100vw, 40vw" /></div>
   </figure>
   <div className={styles.partnershipCopy}><h2>A Partnership Built on Trust</h2><p>Two business families. Two markets. One shared commitment.</p>
 <p>EXIM WORLD LTD was established through the business partnership of Ernő Demus and Tivadar Pálóczi, bringing together a shared vision for international trade and long-term business relationships.</p>
