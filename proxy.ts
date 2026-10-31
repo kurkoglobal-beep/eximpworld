@@ -14,7 +14,9 @@ export function proxy(request: NextRequest) {
 
   // One redirect removes the old language parameter, resolves aliases and
   // normalizes the trailing slash, retaining all RFQ/tracking parameters.
-  if (target !== pathname + request.nextUrl.search) {
+  // Vercel may normalize spaces in queries (%20 versus +). Compare paths
+  // and the legacy parameter, never the serialized query, to avoid loops.
+  if (new URL(target, origin).pathname !== pathname || request.nextUrl.searchParams.has('lang')) {
     const response = NextResponse.redirect(new URL(target, origin), 301);
     if (preview) response.headers.set('X-Robots-Tag', 'noindex, follow');
     return response;

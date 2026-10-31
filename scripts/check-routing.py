@@ -115,6 +115,10 @@ for hu, en in sorted(pairs):
     if en != '/en': redirect(en[3:]+'?lang=en', en)
 for path in sorted(linked_paths):
     assert get(path)[0] == 200, path
+# Equivalent query encodings must never cause canonicalization redirects.
+for contact in ['/kapcsolat', '/en/contact']:
+    for query in ['product=Izopropil-alkohol%20%28IPA%29', 'product=Izopropil-alkohol+%28IPA%29', 'product=IPA&note=A%2BB%20%26%20C']:
+        assert get(contact + '?' + query)[0] == 200, (contact, query)
 redirect('/en/products/isopropyl-alcohol-ipa?lang=en', '/en/products/isopropyl-alcohol')
 for path in ['/en/does-not-exist', '/en/products/does-not-exist', '/en/services/does-not-exist']:
     assert get(path)[0] == 404, path
