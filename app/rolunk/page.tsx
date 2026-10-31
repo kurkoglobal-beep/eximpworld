@@ -1,5 +1,6 @@
 'use client';
 
+import { AboutTeam } from '@/components/about-team';
 import { useLocale } from '@/components/locale';
 import { Footer, Header, PageIntro } from '@/components/site-shell';
 import { ArrowRight, Handshake, ShieldCheck, Sparkles } from 'lucide-react';
@@ -76,6 +77,8 @@ export default function About() {
             {values[locale].map(({ icon: Icon, title, copy }) => <article className="usp-card" key={title}><span className="icon-box"><Icon size={22} /></span><h3>{title}</h3><p>{copy}</p></article>)}
           </div>
         </section>
+
+        {en && <AboutTeam />}
 
         <section className="cta-band">
           <div>
