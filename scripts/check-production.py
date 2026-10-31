@@ -19,9 +19,9 @@ class Links(HTMLParser):
             if k in ('src','href','poster') and v and v.startswith('/') and not v.startswith('//'):
                 self.paths.add(v.split('#')[0])
 _,xml=get('/sitemap.xml');paths={urllib.parse.urlsplit(e.text).path for e in ET.fromstring(xml).iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
-paths.update(['/adatvedelem','/sutik','/aszf']); assets=set()
+paths.update(['/adatvedelem','/sutik','/aszf','/en/privacy-policy','/en/cookie-policy','/en/terms-and-conditions']); assets=set()
 for path in sorted(paths):
-    r,b=get(path);text=b.decode();assert '<html lang="hu"' in text,path
+    r,b=get(path);text=b.decode();assert ('<html lang="en"' if path == '/en' or path.startswith('/en/') else '<html lang="hu"') in text,path
     assert 'https://eximpworld.hu'+path in text,path
     parser=Links();parser.feed(text);assets.update(parser.paths)
 for path in sorted(assets-paths):get(path)
@@ -31,4 +31,4 @@ for query in ['/?market=uk','/?market=hu','/contact?product=ipa']:
     _,b=get(query);assert '<html lang="hu"' in b.decode()
 r,b=get('/', 'eximpworld.hu');assert 'noindex' not in b.decode();assert not r.headers.get('X-Robots-Tag')
 r,b=get('/', 'preview.vercel.app');assert r.headers.get('X-Robots-Tag')=='noindex, follow'
-print(f'PASS: {len(paths)} HU oldalak, {len(assets)} belső hivatkozás/asset, összes public fájl, HU piacrögzítés és production/preview SEO.')
+print(f'PASS: {len(paths)} HU/EN oldalak, {len(assets)} belső hivatkozás/asset, összes public fájl, HU piacrögzítés és production/preview SEO.')

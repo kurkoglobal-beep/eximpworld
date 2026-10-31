@@ -1,11 +1,33 @@
+import { marketRoutePairs } from './market-routes';
+export { translatedTerm } from './translated-terms';
+
 export type Language = 'hu' | 'en';
+
+// Reuse the catalogue and service routes; keep the Hungarian URLs unchanged.
+export const languageRoutePairs = marketRoutePairs.map(([hu, english]) => ({
+  hu,
+  en: english === '/' ? '/en' : `/en${english === '/products/isopropyl-alcohol-ipa' ? '/products/isopropyl-alcohol' : english}`,
+  legacyEnglish: english,
+}));
+
+export function languageRoute(pathname: string) {
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  const unprefixed = clean === '/en' ? '/' : clean.startsWith('/en/') ? clean.slice(3) : clean;
+  return languageRoutePairs.find(route =>
+    route.hu === unprefixed || route.legacyEnglish === unprefixed || route.en === clean,
+  );
+}
+
 export function languageHref(href: string, locale: Language): string {
   if (!href.startsWith('/') || href.startsWith('//') || /\.[a-z0-9]+(?:[?#]|$)/i.test(href.split('?')[0])) return href;
   const url = new URL(href, 'https://eximpworld.hu');
-  if (locale === 'en') url.searchParams.set('lang', 'en');
-  else url.searchParams.delete('lang');
+  const route = languageRoute(url.pathname);
+  if (route) url.pathname = route[locale];
+  else {
+    const path = url.pathname.replace(/\/+$/, '') || '/';
+    const hu = path.startsWith('/en/') ? path.slice(3) : path;
+    url.pathname = locale === 'en' ? `/en${hu === '/' ? '' : hu}` : hu;
+  }
+  url.searchParams.delete('lang');
   return url.pathname + url.search + url.hash;
 }
-
-const terms: Record<string,string> = {"Mind": "All", "Oldószerek": "Solvents", "Glikolok": "Glycols", "Tisztított vizek": "Purified water", "Ásványi anyagok": "Minerals", "Szervetlen sók": "Inorganic salts", "Vízkezelés": "Water treatment", "Foszfátok": "Phosphates", "Kelátképzők": "Chelating agents", "Szerves anyagok": "Organic materials", "Ipari minőség": "Industrial grade", "Por / granulátum": "Powder / granules", "Heptahidrát": "Heptahydrate", "Vízmentes": "Anhydrous", "Folyamatos készlet": "Regular stock", "Nagy tisztaság": "High purity", "Ipari folyadék": "Industrial liquid", "Trihidrát / vízmentes": "Trihydrate / anhydrous", "Ipari / műtrágya": "Industrial / fertiliser", "ADR Raktár / Depo": "ADR warehouse / depot", "Változó összetételű alumínium-filloszilikát": "Aluminium phyllosilicate of variable composition"};
-export const translatedTerm = (text: string, en: boolean) => en ? (terms[text] || text) : text;

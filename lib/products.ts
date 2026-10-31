@@ -1,4 +1,4 @@
-import { translatedTerm } from './language';
+import { translatedTerm } from './translated-terms';
 export type Product = {
   hu: string;
   en: string;

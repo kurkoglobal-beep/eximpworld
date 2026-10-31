@@ -15,6 +15,7 @@ import {
 import { useState } from 'react';
 import { useLocale } from './locale';
 import { MarketSwitcher } from './market-switcher';
+import { languageRoute } from '@/lib/language';
 import { marketPath } from '@/lib/market-routes';
 
 const labels = {
@@ -31,7 +32,8 @@ export function Header() {
   const navLabels = uk
     ? ['Home', 'Products', 'Industries', 'Services', 'About', 'Contact']
     : labels[locale];
-  const path = usePathname();
+  const pathname = usePathname();
+  const path = languageRoute(pathname)?.hu || pathname;
   const [open, setOpen] = useState(false);
   return (
     <>

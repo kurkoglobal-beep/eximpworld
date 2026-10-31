@@ -5,7 +5,7 @@ import './globals.css';
 import { LocaleProvider } from '@/components/locale';
 import { CookieNotice } from '@/components/cookie-notice';
 import { markets } from '@/config/markets';
-import { marketUrl, marketPath } from '@/lib/market-routes';
+import { marketPath } from '@/lib/market-routes';
 import { ukProducts } from '@/lib/uk-products';
 import { getProductBySlug } from '@/lib/products';
 export const dynamic = 'force-dynamic';
@@ -69,8 +69,8 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical,
       languages: {
-        'hu-HU': marketUrl(path, 'hu'),
-        'en-GB': 'https://eximpworld.hu' + languageHref(path, 'en'),
+        hu: 'https://eximpworld.hu' + languageHref(path, 'hu'),
+        en: 'https://eximpworld.hu' + languageHref(path, 'en'),
       },
     },
     robots:
