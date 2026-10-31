@@ -1,11 +1,13 @@
 'use client';
 import { Footer, Header, PageIntro } from '@/components/site-shell';
 import { useLocale } from '@/components/locale';
+import { EnglishContact } from '@/components/english-contact';
 import { RFQForm } from '@/components/rfq-form';
 import { CompanyPanel } from '@/components/uk-site';
 export default function Contact() {
   const { locale } = useLocale();
   const en = locale === 'en';
+  if (en) return <EnglishContact />;
   return (
     <>
       <Header />
