@@ -1,4 +1,6 @@
 'use client';
+import { EnglishProductCard } from '@/components/english-product-card';
+import { englishCatalogueProducts } from '@/lib/product-information';
 import { ProductsHeroVideo } from '@/components/products-hero-video';
 import { translatedTerm } from '@/lib/language';
 import LocaleLink from '@/components/locale-link';
@@ -21,14 +23,14 @@ export default function Products() {
   const [category, setCategory] = useState('Mind');
   const shown = useMemo(
     () =>
-      products.filter(
+      (en ? englishCatalogueProducts : products).filter(
         (product) =>
           (category === 'Mind' || product.category === category) &&
           `${product.hu} ${product.en} ${product.cas}`
             .toLowerCase()
             .includes(query.toLowerCase()),
       ),
-    [query, category],
+    [query, category, en],
   );
 
   return (
@@ -120,13 +122,14 @@ export default function Products() {
             <p className="hidden items-center gap-2 text-xs text-slate-400 sm:flex">
               <FileText size={15} />{' '}
               {en
-                ? 'Each product has a technical profile'
+                ? 'Product information and documentation'
                 : 'Minden termékhez tartozik műszaki adatlap'}
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((product) => {
+              if (en) return <EnglishProductCard key={product.cas} product={product} />;
               const details = productDetails(product, en);
               return (
                 <LocaleLink

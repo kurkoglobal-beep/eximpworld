@@ -1,0 +1,310 @@
+[
+  {
+    "slug": "isopropyl-alcohol",
+    "name": "Isopropyl Alcohol (IPA)",
+    "cas": "67-63-0",
+    "ec": "200-661-7",
+    "formula": "C3H8O",
+    "synonyms": "Isopropanol; propan-2-ol; 2-propanol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless liquid"
+      ],
+      [
+        "Reference boiling point",
+        "83°C"
+      ],
+      [
+        "Water solubility",
+        "Miscible"
+      ]
+    ],
+    "applications": "Solvent in printing inks and lacquers; component in cleaning formulations.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0554 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0554&p_lang=en"
+      },
+      {
+        "title": "INEOS - C3 alcohols",
+        "url": "https://www.ineos.com/businesses/ineos-enterprises/businesses/ineos-solvents/products/c3-alcohols/"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": false
+  },
+  {
+    "slug": "ethyl-acetate",
+    "name": "Ethyl Acetate",
+    "cas": "141-78-6",
+    "ec": "205-500-4",
+    "formula": "C4H8O2",
+    "synonyms": "Acetic acid ethyl ester; acetic ether",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless liquid"
+      ],
+      [
+        "Reference boiling point",
+        "77°C"
+      ],
+      [
+        "Water solubility",
+        "8.7 g/100 ml at 20°C"
+      ]
+    ],
+    "applications": "Solvent in coating formulations and adhesives.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0367 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0367&p_lang=en"
+      },
+      {
+        "title": "Celanese - Ethyl acetate",
+        "url": "https://www.celanese.com/products/ethyl-acetate"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "acetone",
+    "name": "Acetone",
+    "cas": "67-64-1",
+    "ec": "200-662-2",
+    "formula": "C3H6O",
+    "synonyms": "Propan-2-one; dimethyl ketone",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless liquid"
+      ],
+      [
+        "Reference boiling point",
+        "56°C"
+      ],
+      [
+        "Water solubility",
+        "Miscible"
+      ]
+    ],
+    "applications": "Solvent for paints and varnishes; intermediate in acrylic polymer production.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0087 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0087&p_lang=en"
+      },
+      {
+        "title": "INEOS Phenol - Acetone",
+        "url": "https://www.ineos.com/businesses/ineos-phenol/products/acetone/"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "n-propanol",
+    "name": "n-Propanol",
+    "cas": "71-23-8",
+    "ec": "200-746-9",
+    "formula": "C3H8O",
+    "synonyms": "Propan-1-ol; n-propyl alcohol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Appearance",
+        "Clear, colourless liquid"
+      ],
+      [
+        "Reference boiling point",
+        "97°C"
+      ],
+      [
+        "Water solubility",
+        "Miscible"
+      ]
+    ],
+    "applications": "Solvent in flexographic and other printing inks; solvent in surface coatings.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0553 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0553&p_lang=en"
+      },
+      {
+        "title": "Eastman - n-Propyl alcohol",
+        "url": "https://www.eastman.com/en/products/product-detail/71000121/n-propyl-alcohol-n-propanol"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "xylene-mixed-isomers",
+    "name": "Xylene (Mixed Isomers)",
+    "cas": "1330-20-7",
+    "ec": "215-535-7",
+    "formula": "C8H10 (xylene isomers)",
+    "synonyms": "Dimethylbenzene; xylol",
+    "category": "Oldószerek",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless liquid"
+      ],
+      [
+        "Composition",
+        "Mixture of ortho-, meta- and para-xylene"
+      ],
+      [
+        "Water solubility",
+        "Low solubility"
+      ]
+    ],
+    "applications": "Solvent in paints, coatings and printing inks.",
+    "note": "Commercial mixtures may contain ethylbenzene. Isomer ratios and physical properties vary; confirm composition and specifications with the supplier.",
+    "sources": [
+      {
+        "title": "ITW Reagents - Xylene mixture (identity)",
+        "url": "https://www.itwreagents.com/united-states/en/product/pharma-production-excipients/xylene-mixture-of-isomers-technical-grade/211769"
+      },
+      {
+        "title": "WHO / IPCS - Xylenes, EHC 190",
+        "url": "https://www.inchem.org/documents/ehc/ehc/ehc190.htm"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "propylene-glycol",
+    "name": "Propylene Glycol (MPG)",
+    "cas": "57-55-6",
+    "ec": "200-338-0",
+    "formula": "C3H8O2",
+    "synonyms": "Monopropylene glycol; 1,2-propanediol",
+    "category": "Glikolok",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless, viscous liquid"
+      ],
+      [
+        "Reference boiling point",
+        "188.2°C"
+      ],
+      [
+        "Water solubility",
+        "Miscible"
+      ]
+    ],
+    "applications": "Raw material for unsaturated polyester resins; component in formulated heat-transfer fluids.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0321 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0321&p_lang=en"
+      },
+      {
+        "title": "Repsol - Industrial propylene glycol",
+        "url": "https://www.repsol.com/en/products-and-services/materials/product-range/propylene-glycol-for-industrial-use/index.cshtml"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": false
+  },
+  {
+    "slug": "monoethanolamine",
+    "name": "Monoethanolamine (MEA)",
+    "cas": "141-43-5",
+    "ec": "205-483-3",
+    "formula": "C2H7NO",
+    "synonyms": "Ethanolamine; 2-aminoethanol; 2-hydroxyethylamine",
+    "category": "Szerves anyagok",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless, viscous liquid"
+      ],
+      [
+        "Reference boiling point",
+        "171°C"
+      ],
+      [
+        "Water solubility",
+        "Freely soluble"
+      ]
+    ],
+    "applications": "Amine absorbent for acid-gas removal, including carbon dioxide and hydrogen sulphide, in industrial gas treatment.",
+    "note": "Reference values describe the substance, not a supplied grade or batch. No purity or impurity limits are specified.",
+    "sources": [
+      {
+        "title": "ILO / WHO - ICSC 0152 (identity and properties)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=0152&p_lang=en"
+      },
+      {
+        "title": "BASF - Gas-treatment formulations and solvents",
+        "url": "https://energy-resources.basf.com/global/en/gas-treatment/gas-treatment-oase/formulations-and-solvents"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  },
+  {
+    "slug": "phosphoric-acid-75",
+    "name": "Phosphoric Acid 75%",
+    "cas": "7664-38-2",
+    "ec": "231-633-2",
+    "formula": "H3PO4 (acid component)",
+    "synonyms": "Orthophosphoric acid, aqueous solution",
+    "category": "Foszfátok",
+    "properties": [
+      [
+        "Appearance",
+        "Colourless, viscous liquid"
+      ],
+      [
+        "Reference boiling point",
+        "135°C (75% solution)"
+      ],
+      [
+        "Water solubility",
+        "Miscible"
+      ]
+    ],
+    "applications": "Raw material for phosphate salts used in water treatment and metal-finishing applications.",
+    "note": "75% denotes the nominal acid concentration by mass in water. CAS, EC and formula identify the acid component. Reference boiling point applies to the 75% solution; final assay requires supplier confirmation.",
+    "sources": [
+      {
+        "title": "Innophos - SDS, sections 1 and 9 (75% solution)",
+        "url": "https://www.innophos.com/-/media/innophos-com/customer-center-files/phosphates/public/unique/001/phos-acid-75-to-85-sds.pdf"
+      },
+      {
+        "title": "ILO / WHO - ICSC 1008 (acid formula)",
+        "url": "https://chemicalsafety.ilo.org/dyn/icsc/showcard.display?p_card_id=1008&p_lang=en"
+      },
+      {
+        "title": "Innophos - Phosphoric acid (technical)",
+        "url": "https://www.innophos.com/products/phos-acid-tech"
+      }
+    ],
+    "version": "1.0",
+    "issued": "2026-10-31",
+    "additional": true
+  }
+]

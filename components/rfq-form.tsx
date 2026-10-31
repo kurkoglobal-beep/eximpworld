@@ -4,6 +4,7 @@ import LocaleLink from '@/components/locale-link';
 import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLocale } from './locale';
+import { additionalEnglishQuoteOptions } from '@/lib/product-information';
 import { products } from '@/lib/products';
 import { ukProducts, ipaVariants } from '@/lib/uk-products';
 import { marketPath } from '@/lib/market-routes';
@@ -14,10 +15,11 @@ export function RFQForm() {
   const uk = market.id === 'uk';
   const params = useSearchParams();
   const initial = params.get('product') || '';
+  const quoteOptions = en ? [...ukProducts, ...additionalEnglishQuoteOptions] : ukProducts;
   const match =
-    ukProducts.find(
+    quoteOptions.find(
       (p, i) =>
-        p.id === initial || p.name === initial || products[i].hu === initial,
+        p.id === initial || p.name === initial || products[i]?.hu === initial,
     ) || (initial.toLowerCase().startsWith('ipa') ? ukProducts[0] : undefined);
   const [product, setProduct] = useState(match?.id || '');
   const requestedPackaging = params.get('packaging');
@@ -34,7 +36,7 @@ export function RFQForm() {
   const [busy, setBusy] = useState(false);
   const [download, setDownload] = useState('');
   const [mail, setMail] = useState('');
-  const selected = ukProducts.find((p) => p.id === product);
+  const selected = quoteOptions.find((p) => p.id === product);
   const requestedVariant = ipaVariants.find(
     (v) => v.id === params.get('variant'),
   );
@@ -179,7 +181,7 @@ export function RFQForm() {
             <option value="">
               {en ? 'Select product' : 'Válasszon terméket'}
             </option>
-            {ukProducts.map((p, i) => (
+            {quoteOptions.map((p, i) => (
               <option key={p.id} value={p.id}>
                 {en ? p.name : products[i].hu}
               </option>
