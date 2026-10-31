@@ -218,12 +218,13 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
           <h3 className="footer-title">
             {locale === 'hu' ? 'Gyorslinkek' : 'Quick links'}
           </h3>
-          <LocaleLink className="footer-link" href="/karrier">{en ? 'Careers' : 'Karrier'}</LocaleLink>
           {footerLinks.map((x, i) => (
             <LocaleLink className="footer-link" href={x} key={x}>
               {footerLabels[i]}
             </LocaleLink>
           ))}
+          <h3 className="footer-title mt-6">{en ? 'Company' : 'Vállalat'}</h3>
+          <LocaleLink className="footer-link" href="/karrier">{en ? 'Careers & Opportunities' : 'Karrier és lehetőségek'}</LocaleLink>
         </div>
       </div>
       <div className="border-t border-white/10">
