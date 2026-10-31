@@ -1,3 +1,2 @@
-import { Header, Footer } from '@/components/site-shell';
-import { LegalPageContent } from '@/components/legal-content';
-export default function Legal(){return <><Header/><main><LegalPageContent/></main><Footer/></>;}
+import { CompanyTerms } from '@/components/company-terms';
+export default function TermsPage(){return <CompanyTerms/>;}

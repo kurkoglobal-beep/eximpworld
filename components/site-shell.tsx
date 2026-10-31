@@ -235,11 +235,12 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
               ? 'Minden jog fenntartva.'
               : 'All rights reserved.'}
           </span>
-          <div className="flex flex-wrap gap-4">
+          <nav className="flex flex-wrap gap-4" aria-label={en ? 'Legal' : 'Jogi információk'}>
+            <span className="font-semibold text-slate-300">{en ? 'Legal' : 'Jogi információk'}</span>
             {[
               ['/adatvedelem', locale === 'en' ? 'Privacy Policy' : 'Adatvédelem'],
               ['/sutik', locale === 'en' ? 'Cookie Policy' : 'Sütik'],
-              ['/aszf', locale === 'en' ? 'General Terms & Conditions' : 'ÁSZF'],
+              ['/aszf', locale === 'en' ? 'General Terms' : 'ÁSZF'],
             ].map(([path, label]) => (
               <LocaleLink key={path} href={marketPath(path, market.id)}>
                 {label}
@@ -252,7 +253,7 @@ export function Footer({ hidePhone = false }: { hidePhone?: boolean }) {
             >
               {locale === 'en' ? 'Cookie settings' : 'Sütibeállítások'}
             </button>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

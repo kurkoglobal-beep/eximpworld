@@ -1,0 +1,284 @@
+{
+  "hu": {
+    "sections": [
+      {
+        "id": "section-1",
+        "heading": "1. Hatály és alkalmazás",
+        "paragraphs": [
+          "1.1. Jelen Általános Értékesítési és Szállítási Feltételek (ÁSZF) az EximpWorld Kft. (a továbbiakban: Eladó) és üzleti partnerei (a továbbiakban: Vevő) között létrejövő, vállalkozások közötti termékértékesítésekre alkalmazandók.",
+          "1.2. A feltételek elsősorban vegyipari alapanyagok, oldószerek és kapcsolódó ipari termékek kereskedelmére vonatkoznak.",
+          "1.3. Az egyedileg, írásban elfogadott szerződéses feltételek eltérés esetén elsőbbséget élveznek.",
+          "1.4. Az ÁSZF az adott szerződés részévé akkor válik, ha azt a Vevővel megfelelően közölték, és a felek érvényesen elfogadták."
+        ]
+      },
+      {
+        "id": "section-2",
+        "heading": "2. Ajánlatok és megrendelések",
+        "paragraphs": [
+          "2.1. Az Eladó ajánlatai az ajánlatban meghatározott érvényességi időn belül fogadhatók el.",
+          "2.2. A szerződés az Eladó írásos megrendelés-visszaigazolásával vagy más egyértelmű írásbeli elfogadásával jön létre.",
+          "2.3. A visszaigazolás tartalmazza a termék megnevezését, mennyiségét, egységárát, szállítási feltételeit és a fizetési megállapodást.",
+          "2.4. A visszaigazolt megrendelés módosításához mindkét fél hozzájárulása szükséges."
+        ]
+      },
+      {
+        "id": "section-3",
+        "heading": "3. Árak és fizetési feltételek",
+        "paragraphs": [
+          "3.1. Az árak eltérő megállapodás hiányában nettó árak, amelyekhez az alkalmazandó adók a jogszabályok szerint kerülnek felszámításra.",
+          "3.2. Új üzleti partnerek első megrendelésénél az alapértelmezett fizetési feltétel a teljes vételár előzetes megfizetése.",
+          "3.3. Az Eladó egyedi üzleti mérlegelés alapján már az első megrendelésnél is engedélyezhet eltérő fizetési konstrukciót.",
+          "3.4. Az egyedi fizetési feltételeket minden esetben írásban kell rögzíteni.",
+          "3.5. A fizetés kizárólag az Eladó által írásban megerősített bankszámlára teljesíthető.",
+          "3.6. Fizetési késedelem esetén az alkalmazandó jogszabályok és az érvényes egyedi megállapodás szerinti jogkövetkezmények alkalmazhatók."
+        ]
+      },
+      {
+        "id": "section-4",
+        "heading": "4. Szállítás és Incoterms",
+        "paragraphs": [
+          "4.1. A szállítás az egyedi megállapodásban meghatározott Incoterms® 2020 szabály alapján történik.",
+          "4.2. Az ajánlatban vagy visszaigazolásban a választott szállítási szabály mellett a pontos földrajzi helyet is meg kell jelölni.",
+          "4.3. A kárveszély átszállását a megállapodott Incoterms-szabály és az alkalmazandó kötelező jogszabályok határozzák meg.",
+          "4.4. A Vevő köteles a szállítmány biztonságos átvételéhez és kirakodásához szükséges feltételeket biztosítani, amennyiben ez az ő feladata.",
+          "4.5. Az Eladó az előre látható, lényeges szállítási késedelemről észszerű időn belül tájékoztatja a Vevőt."
+        ]
+      },
+      {
+        "id": "section-5",
+        "heading": "5. Mennyiség, csomagolás és göngyöleg",
+        "paragraphs": [
+          "5.1. A szállítandó mennyiséget, a csomagolás típusát és az esetleges mennyiségi toleranciát az egyedi megrendelés-visszaigazolás tartalmazza.",
+          "5.2. A termékek szállítása történhet különösen hordóban, IBC-tartályban vagy tartálykocsiban.",
+          "5.3. A visszaváltható göngyöleg, tisztítás, visszaszállítás és esetleges állásidő költségeit a felek előzetesen egyeztetik.",
+          "5.4. Általános, minden termékre kötelező mennyiségi eltérés nem alkalmazandó."
+        ]
+      },
+      {
+        "id": "section-6",
+        "heading": "6. Termékminőség és dokumentáció",
+        "paragraphs": [
+          "6.1. Az Eladó a szerződésben meghatározott specifikációnak megfelelő termék szállítására vállal kötelezettséget.",
+          "6.2. Az Eladó a megállapodásnak és az alkalmazandó jogszabályoknak megfelelően biztosítja a szükséges dokumentációt, így különösen a biztonsági adatlapot (SDS), illetve megállapodás esetén a minőségi bizonyítványt (COA).",
+          "6.3. A Vevő felelős annak megítéléséért, hogy a termék megfelel-e saját, az Eladóval előzetesen nem egyeztetett technológiai felhasználási céljának.",
+          "6.4. Az Eladó az egyedileg vállalt termékjellemzők teljesítéséért a szerződés és az alkalmazandó jog szerint felel."
+        ]
+      },
+      {
+        "id": "section-7",
+        "heading": "7. Átvétel és minőségi reklamáció",
+        "paragraphs": [
+          "7.1. A Vevő az áru átvételekor észszerűen ellenőrzi a termék azonosítását, mennyiségét, csomagolását és az észlelhető sérüléseket.",
+          "7.2. A nyilvánvaló eltéréseket indokolatlan késedelem nélkül, lehetőség szerint öt munkanapon belül írásban kell jelezni.",
+          "7.3. A később felismerhető minőségi hibákat azok felfedezését követően indokolatlan késedelem nélkül kell bejelenteni.",
+          "7.4. Tartálykocsis szállításnál a felek lehetőség szerint a lefejtés előtt dokumentált mintavételt végeznek. Ez önmagában nem zárja ki a jogszerűen érvényesíthető, később felismerhető hibákra vonatkozó igényeket.",
+          "7.5. Minőségi vita esetén a felek közösen elfogadott, független laboratóriumi vizsgálatot kezdeményezhetnek."
+        ]
+      },
+      {
+        "id": "section-8",
+        "heading": "8. Hibás teljesítés rendezése",
+        "paragraphs": [
+          "8.1. Igazolt nem megfelelő teljesítés esetén a felek elsődlegesen egyeztetéssel törekednek a rendezésre.",
+          "8.2. Az alkalmazandó jog és a szerződés keretei között megfelelő megoldás lehet a termék cseréje, a hiány pótlása, árengedmény vagy vételár-visszatérítés.",
+          "8.3. Veszélyes áru visszaszállítása kizárólag előzetesen egyeztetett, jogszerű és biztonságos eljárás alapján történhet."
+        ]
+      },
+      {
+        "id": "section-9",
+        "heading": "9. Veszélyes áruk és jogszabályi megfelelőség",
+        "paragraphs": [
+          "9.1. A felek kötelesek betartani a tevékenységükre vonatkozó ADR, REACH, CLP, vám-, jövedéki és egyéb kötelező előírásokat.",
+          "9.2. Engedélyköteles termékek kereskedelme kizárólag a szükséges jogosultságok és engedélyek megléte mellett történhet.",
+          "9.3. A Vevő a saját ellenőrzése alatt álló tárolásért, kezelésért és felhasználásért felel."
+        ]
+      },
+      {
+        "id": "section-10",
+        "heading": "10. Tulajdonjog-fenntartás",
+        "paragraphs": [
+          "10.1. Amennyiben a vonatkozó jog lehetővé teszi, és a felek érvényesen kikötik, a termék tulajdonjoga a teljes vételár megfizetéséig az Eladónál marad.",
+          "10.2. A tulajdonjog és a kárveszély átszállása eltérő időpontban történhet."
+        ]
+      },
+      {
+        "id": "section-11",
+        "heading": "11. Felelősség",
+        "paragraphs": [
+          "11.1. A felek a szerződésszegéssel okozott károkért az alkalmazandó jog szerint felelnek.",
+          "11.2. A felelősség esetleges szerződéses korlátozása csak a jogszabályok által megengedett körben alkalmazható.",
+          "11.3. A jelen feltételek nem tartalmaznak általános, minden körülményre kiterjedő felelősségkizárást."
+        ]
+      },
+      {
+        "id": "section-12",
+        "heading": "12. Vis maior",
+        "paragraphs": [
+          "12.1. A fél az ellenőrzési körén kívül eső, előre nem látható és el nem hárítható akadályról indokolatlan késedelem nélkül értesíti a másik felet.",
+          "12.2. A felek együttműködnek a károk mérséklésében és az észszerű alternatív megoldások keresésében.",
+          "12.3. Tartós akadály esetén a felek egyeztetnek a szerződés módosításáról vagy megszüntetéséről és a teljesített, illetve előre kifizetett tételek elszámolásáról."
+        ]
+      },
+      {
+        "id": "section-13",
+        "heading": "13. Szerződés megszüntetése",
+        "paragraphs": [
+          "13.1. Lényeges szerződésszegés esetén a sérelmet szenvedő fél az alkalmazandó jog szerint jogosult a szükséges intézkedésekre.",
+          "13.2. Amennyiben indokolt, a másik félnek megfelelő póthatáridőt kell biztosítani.",
+          "13.3. A megszüntetés pénzügyi következményeit a tényleges teljesítés, az igazolt költségek, a szerződés és az alkalmazandó jog alapján kell rendezni."
+        ]
+      },
+      {
+        "id": "section-14",
+        "heading": "14. Titoktartás és adatvédelem",
+        "paragraphs": [
+          "A felek a tudomásukra jutott bizalmas üzleti információkat védik, a személyes adatokat pedig az alkalmazandó adatvédelmi szabályoknak megfelelően kezelik."
+        ]
+      },
+      {
+        "id": "section-15",
+        "heading": "15. Jogviták",
+        "paragraphs": [
+          "15.1. A felek a vitás kérdéseket elsőként jóhiszemű üzleti egyeztetéssel kísérlik meg rendezni.",
+          "15.2. E tervezet kiinduló jogválasztása a magyar jog. A bírósági illetékesség, valamint a nemzetközi adásvételi egyezmény (CISG) alkalmazásának kérdése jogi felülvizsgálat során véglegesítendő."
+        ]
+      },
+      {
+        "id": "section-16",
+        "heading": "16. Záró rendelkezések",
+        "paragraphs": [
+          "16.1. A jelen feltételek végleges hatálybalépési dátumát és verziószámát a közzététel előtt kell rögzíteni.",
+          "16.2. Az egyedi, írásban elfogadott feltételek eltérés esetén elsőbbséget élveznek."
+        ]
+      }
+    ],
+    "company": "EXIMPWORLD KFT.",
+    "title": "Általános Értékesítési és Szállítási Feltételek",
+    "tagline": "Átlátható feltételek. Megbízható üzleti kapcsolatok.",
+    "notice": "Tervezet – jogi felülvizsgálatra. Hatálybalépés előtt jóváhagyandó.",
+    "status": "Státusz: Jogi felülvizsgálatra szánt tervezet. A végleges céges adatok, joghatósági rendelkezések és kötelező jogszabályi megfelelőségi részletek ellenőrzése szükséges.",
+    "sourceSha256": "2559b16351f3c299be57c7f56c961f33d1a57831ddb561061f0ee53f4153d531",
+    "pdf": "/downloads/terms/eximpworld-kft-aszf-tervezet.pdf"
+  },
+  "en": {
+    "sections": [
+      {
+        "id": "section-1",
+        "heading": "1. Scope and Application",
+        "paragraphs": [
+          "1.1. These General Terms & Conditions apply to business-to-business sales of industrial products, chemical raw materials and related goods where EximpWorld Ltd (United Kingdom) is expressly identified as the Seller.",
+          "1.2. The Seller and Buyer are collectively referred to as the Parties.",
+          "1.3. Individually agreed written contractual terms shall prevail over any conflicting provision of these General Terms.",
+          "1.4. These Terms shall form part of a contract only where properly communicated and incorporated into that contract."
+        ]
+      },
+      {
+        "id": "section-2",
+        "heading": "2. Quotations and Orders",
+        "paragraphs": [
+          "2.1. Quotations are valid for the period expressly stated in the quotation.",
+          "2.2. A contract is formed upon the Seller's written order confirmation or another clear written acceptance.",
+          "2.3. The order confirmation shall specify the products, quantities, prices, delivery arrangements and payment conditions.",
+          "2.4. Once confirmed, an order may be amended only by mutual agreement."
+        ]
+      },
+      {
+        "id": "section-3",
+        "heading": "3. Prices and Payment",
+        "paragraphs": [
+          "3.1. Unless otherwise specified, prices are exclusive of applicable taxes.",
+          "3.2. First orders from new customers are normally subject to 100% advance payment.",
+          "3.3. The Seller may agree alternative payment arrangements, including for a customer's first transaction, at its commercial discretion.",
+          "3.4. Any alternative payment terms must be confirmed in writing before acceptance of the relevant order.",
+          "3.5. Payments must be made only to the Seller's verified bank account specified in the agreed transaction documents.",
+          "3.6. Payment currency, due dates and any agreed credit facilities shall be specified in the order confirmation or other written agreement.",
+          "3.7. Late payment shall be addressed in accordance with applicable law and the agreed contractual terms."
+        ]
+      },
+      {
+        "id": "section-4",
+        "heading": "4. Delivery and Incoterms",
+        "paragraphs": [
+          "4.1. Delivery arrangements shall be governed by the agreed Incoterms® 2020 rule and the precise named place specified in the order confirmation.",
+          "4.2. The passing of risk shall be determined by the agreed delivery rule, subject to applicable mandatory law.",
+          "4.3. The Buyer shall provide appropriate receiving facilities, unloading arrangements and safe access where these fall within its responsibilities.",
+          "4.4. The Seller shall provide reasonable notice of foreseeable material delivery delays."
+        ]
+      },
+      {
+        "id": "section-5",
+        "heading": "5. Quantities, Packaging and Transport Equipment",
+        "paragraphs": [
+          "5.1. Product quantities, measurement methods, packaging and any permitted tolerance shall be specified in the relevant order confirmation.",
+          "5.2. Products may be supplied in drums, intermediate bulk containers (IBCs), tankers or other agreed packaging.",
+          "5.3. Returnable packaging, cleaning requirements, transport equipment return procedures and demurrage charges shall be agreed where applicable.",
+          "5.4. No universal quantity tolerance shall apply unless expressly agreed."
+        ]
+      },
+      {
+        "id": "section-6",
+        "heading": "6. Product Quality and Documentation",
+        "paragraphs": [
+          "6.1. The Seller shall supply products conforming to the agreed written specifications.",
+          "6.2. The Seller shall provide agreed and legally required documentation, which may include Safety Data Sheets (SDS), Certificates of Analysis (COA) and relevant origin or conformity documents.",
+          "6.3. The Buyer is responsible for assessing suitability for its particular intended application where that application has not been expressly agreed with the Seller.",
+          "6.4. The Seller remains responsible for its expressly agreed product obligations and applicable legal requirements."
+        ]
+      },
+      {
+        "id": "section-7",
+        "heading": "7. Inspection and Quality Claims",
+        "paragraphs": [
+          "7.1. The Buyer should reasonably inspect delivered goods for apparent damage, quantity discrepancies and product identification.",
+          "7.2. Apparent discrepancies should be notified promptly, preferably within five business days after receipt.",
+          "7.3. Defects not reasonably discoverable upon receipt should be notified promptly after discovery.",
+          "7.4. For bulk deliveries, the Parties should, where practicable, arrange documented sampling before discharge. This procedure shall not automatically extinguish legally enforceable claims relating to latent defects.",
+          "7.5. Where product quality is disputed, the Parties may agree to independent laboratory analysis."
+        ]
+      },
+      {
+        "id": "section-8",
+        "heading": "8. Remedies for Non-Conforming Goods",
+        "paragraphs": [
+          "8.1. Where a material non-conformity attributable to the Seller is established, the Parties shall seek an appropriate and proportionate resolution.",
+          "8.2. Depending on the circumstances, the contract and applicable law, available remedies may include replacement, making up a shortfall, price adjustment or refund.",
+          "8.3. Returns of hazardous goods shall be subject to an agreed, lawful and safe transport and handling procedure."
+        ]
+      },
+      {
+        "id": "section-9",
+        "heading": "9. Hazardous Materials and Regulatory Compliance",
+        "paragraphs": [
+          "9.1. Each Party shall comply with the regulatory requirements applicable to its own activities.",
+          "9.2. Relevant requirements may include ADR, UK REACH, EU REACH, CLP, customs, excise, sanctions and international trade controls.",
+          "9.3. Transactions involving regulated or licensed products shall be conditional upon the necessary permissions and authorisations.",
+          "9.4. The Buyer shall be responsible for lawful storage, handling and use of the goods within its control."
+        ]
+      },
+      {
+        "id": "section-10",
+        "heading": "10. Retention of Title",
+        "paragraphs": [
+          "10.1. To the extent valid and enforceable under applicable law, ownership of goods shall remain with the Seller until the relevant purchase price has been paid in full.",
+          "10.2. Passing of title and passing of risk may occur at different times.",
+          "10.3. Any extended retention-of-title arrangements shall require separate written agreement and legal review."
+        ]
+      },
+      {
+        "id": "section-11",
+        "heading": "11. Liability",
+        "paragraphs": [
+          "11.1. Each Party shall be responsible for breach of contract in accordance with applicable law.",
+          "11.2. Any limitation of liability shall apply only to"
+        ]
+      }
+    ],
+    "company": "EXIMPWORLD LTD",
+    "title": "General Terms & Conditions of Sale and Delivery",
+    "tagline": "Clear Terms. Reliable Partnerships.",
+    "notice": "Draft for legal review. Not yet effective or approved for publication.",
+    "editorialNote": "Preview note (not part of the supplied terms): The supplied text ends with an incomplete sentence in clause 11.2.",
+    "sourceSha256": "ebae5c1d4c86a7ed671a422287057a57a8c1eabd98bb47ce57690213e70ea446",
+    "pdf": "/downloads/terms/eximpworld-ltd-terms-draft.pdf"
+  }
+}
