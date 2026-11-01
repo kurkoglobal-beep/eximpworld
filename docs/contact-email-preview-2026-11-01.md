@@ -102,3 +102,20 @@ A `1dcd6dcf539545b849a0504437332a3a211a05d0` commit Preview buildjébe egyszeri 
 A build előtt futó ellenőrzés hiba esetén megállította volna a buildet. Ellenőrzései: `REDIS_URL` jelenléte, `rediss://` protokoll, mindkét e-mail-kapcsoló inaktív állapota, node-redis kapcsolódás, véletlen tesztkulcs SET NX EX 60, GET értékegyezés, DEL és törlés utáni GET null. A tesztkulcs biztonsági lejárata 60 másodperc. A napló csak logikai eredményeket tartalmaz, URL-t, hitelesítést vagy kulcsértéket nem.
 
 Ez valódi Redis I/O-próba a Preview **buildkörnyezetében**, nem külön serverless futásidejű vagy SMTP-kézbesítési teszt. Productionhoz és környezeti változókhoz nem nyúltunk. A sikeres próbát követően az egyszeri automatikus buildhívás eltávolításra került; a tesztszkript megmarad kézi, Preview-környezetben történő használatra.
+
+## Valós Sybell SMTP-hitelesítés, levélküldés nélkül
+
+A `19e56d3f24cb81e30ae6116296a5dfcf8da6e853` commit Preview buildjében futott a `scripts/check-preview-smtp.mjs`. A build kötelező előfeltétele a `transport.verify()` sikeres eredménye volt, `mail.eximpworld.hu:465`, implicit TLS, tanúsítvány- és hostnévellenőrzés, minimum TLS 1.2, `info@eximpworld.hu` hitelesítés mellett. Mindkét nyilvános küldési kapcsoló inaktív állapota szintén előfeltétel. A szkript nem tartalmaz levélküldést.
+
+A Vercel kiadás sikeres: deployment `7471038513`, [ellenőrzés](https://vercel.com/kurkoglobal-beeps-projects/eximpworld/Cxs1hd21p9ZUiN948v5yezw8BJvg). Ez a Preview buildkörnyezetből végzett valós kapcsolat- és hitelesítési ellenőrzés. Nem bizonyítja a feladó elfogadását levélküldéskor vagy a postaládába kézbesítést. SMTP-jelszót nem olvastunk ki és nem naplóztunk. Productionhoz és környezeti változókhoz nem nyúltunk. Az egyszeri buildhívást a próba után eltávolítottuk.
+
+### Előkészített, még NEM indított kézbesítési próba
+
+Szkript: `scripts/send-preview-smtp-test.mjs`; nincs bekötve npm/build vagy nyilvános API folyamatba. Kizárólag külön felhasználói jóváhagyás után hívható Preview környezetben, explicit tesztargumentummal. A két nyilvános küldési kapcsolónak ekkor is kikapcsolva kell maradnia. A szkript PostgreSQL vagy más tároló helyett a meglévő Redisben tesztenként külön SET NX jelölést használ az ismétlés megelőzésére; a jelölés bizonytalan SMTP-eredmény után is megmarad. Ezek összesen két, személyes adatot nem tartalmazó Preview tesztjelölés; ismételt futtatás nem indít új levelet.
+
+Feladó mindkettőnél: `info@eximpworld.hu`. Levélenként egy címzett, CC/BCC nélkül:
+
+- HU címzett és Reply-To: `info@eximpworld.hu`. Tárgy: `[TESZT – Preview] EximpWorld SMTP kézbesítési próba`. Szöveg: „Ez egy egyszeri, jóváhagyott technikai teszt a Vercel Preview környezetből. Nem ügyfélmegkeresés. Kérjük, erősítse meg a levél beérkezését. Tesztazonosító: preview-smtp-2026-11-01-hu.”
+- EN címzett és Reply-To: `eximpworldltd@eximpworld.hu`. Tárgy: `[TEST – Preview] EximpWorld SMTP delivery test`. Szöveg: „This is a one-time, approved technical test from Vercel Preview. This is not a customer enquiry. Please confirm receipt. Test ID: preview-smtp-2026-11-01-en.”
+
+A kézbesítési tesztszkript szintaktikai ellenőrzése sikeres. Nem futtattuk. Az SMTP-elfogadás után a postafiókokban külön ellenőrizni kell a beérkezést; addig nem állítunk sikeres kézbesítést.
