@@ -2,11 +2,17 @@ import nodemailer from 'nodemailer';
 import { createClient } from 'redis';
 import type { Store, Mail } from './core';
 
-export function configuration() {
-  const e = process.env;
+export function configuration(e: NodeJS.ProcessEnv = process.env) {
   if (e.CONTACT_EMAIL_ENABLED !== 'true' || e.CONTACT_DELIVERY_VERIFIED !== 'true') return null;
-  if (!e.SMTP_HOST || !['465', '587'].includes(e.SMTP_PORT || '') || !e.SMTP_PASSWORD || e.SMTP_USER !== 'info@eximpworld.hu' || e.SMTP_FROM !== 'info@eximpworld.hu' || !e.CONTACT_TOKEN_SECRET || e.CONTACT_TOKEN_SECRET.length < 32 || !e.CONTACT_REDIS_URL?.startsWith('rediss://')) return null;
-  return { host: e.SMTP_HOST, port: Number(e.SMTP_PORT), user: e.SMTP_USER, pass: e.SMTP_PASSWORD, from: e.SMTP_FROM, secret: e.CONTACT_TOKEN_SECRET, redis: e.CONTACT_REDIS_URL };
+  const host = e.SMTP_HOST || 'mail.eximpworld.hu';
+  const port = e.SMTP_PORT || '465';
+  const secure = e.SMTP_SECURE ?? 'true';
+  const user = e.SMTP_USER || 'info@eximpworld.hu';
+  const from = e.SMTP_FROM || 'info@eximpworld.hu';
+  // Reject contradictory TLS settings rather than silently downgrading.
+  if ((port === '465' && secure !== 'true') || (port === '587' && secure !== 'false')) return null;
+  if (!host || !['465', '587'].includes(port) || !e.SMTP_PASSWORD || user !== 'info@eximpworld.hu' || from !== 'info@eximpworld.hu' || !e.CONTACT_TOKEN_SECRET || e.CONTACT_TOKEN_SECRET.length < 32 || !e.CONTACT_REDIS_URL?.startsWith('rediss://')) return null;
+  return { host, port: Number(port), secure: secure === 'true', user, pass: e.SMTP_PASSWORD, from, secret: e.CONTACT_TOKEN_SECRET, redis: e.CONTACT_REDIS_URL };
 }
 let connection: ReturnType<typeof createClient> | undefined;
 let connecting: Promise<unknown> | undefined;
@@ -41,7 +47,7 @@ export function adapters(config: NonNullable<ReturnType<typeof configuration>>) 
     },
   };
   const transport = nodemailer.createTransport({
-    host: config.host, port: config.port, secure: config.port === 465, requireTLS: true,
+    host: config.host, port: config.port, secure: config.secure, requireTLS: true,
     auth: { user: config.user, pass: config.pass }, tls: { minVersion: 'TLSv1.2', rejectUnauthorized: true },
     connectionTimeout: 10000, greetingTimeout: 10000, socketTimeout: 15000,
     disableFileAccess: true, disableUrlAccess: true,

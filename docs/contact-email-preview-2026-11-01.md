@@ -76,3 +76,11 @@ A levelek a Sybell postafiókokban személyes adatokat tartalmaznak. Aktiválás
 - Nem ellenőrzött: valódi Sybell SMTP, postaládába kézbesítés, valódi Redis, fizikai iPhone, bekapcsolt Vercel Preview végpont. A teljes élesítésre még **nem áll készen**.
 
 Böngészőteszt futtatása: `PLAYWRIGHT_MODULE=/tmp/eximp-routing-test-tools/node_modules/playwright/index.mjs PLAYWRIGHT_BROWSERS_PATH=/tmp/eximp-browser-engines node tests/contact/browser.mjs`. Chrome alapértelmezett macOS telepítési útvonal szükséges. `CONTACT_TEST_URL` és `CONTACT_TEST_OUTPUT` felülírható. A teszt API-válaszokat szimulál, nem küld e-mailt.
+
+## Sybell-konfiguráció pontosítása
+
+A felhasználó a cPanel alapján megadta: `SMTP_HOST=mail.eximpworld.hu`, `SMTP_PORT=465`, `SMTP_SECURE=true`, `SMTP_USER=info@eximpworld.hu`. Ezek a jóváhagyott, nem titkos alapértékek bekerültek a szerveroldali konfigurációba; a feladó alapértéke szintén `info@eximpworld.hu`. A környezeti változók mintája: `docs/contact-email-preview.env.example`. Ellentmondó port/TLS beállítás esetén a rendszer nem aktiválja a küldést.
+
+A jelszó továbbra is hiányzik, később a Vercel környezeti változóiban kerül megadásra. Ebben a lépésben Vercel környezeti változót nem módosítottunk, SMTP-kapcsolatot nem indítottunk. A Redis-elérhetőség, token-titok és a kézbesítési ellenőrzés még szükséges. A korábbi táblázat SMTP-szerverre vonatkozó nyitott kérdése ezzel lezárult.
+
+Új tesztek: `tests/contact/configuration.test.mjs` – jóváhagyott alapértékek, explicit 465/TLS konfiguráció, hiányos hitelesítés és ellentmondó TLS/illetéktelen feladó elutasítása. Futtatás: `node --test tests/contact/*.test.mjs`.
