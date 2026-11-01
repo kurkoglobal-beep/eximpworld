@@ -37,6 +37,19 @@ export function RFQForm() {
   const [busy, setBusy] = useState(false);
   const [download, setDownload] = useState('');
   const [mail, setMail] = useState('');
+  const recipient = en ? 'eximpworldltd@eximpworld.hu' : 'info@eximpworld.hu';
+  const [online, setOnline] = useState<{ locale: string; token: string } | null>(null);
+  const onlineEnabled = online?.locale === locale;
+  useEffect(() => {
+    const controller = new AbortController();
+    setOnline(null);
+    setStatus('');
+    fetch(`/api/contact?locale=${locale}`, { signal: controller.signal, cache: 'no-store' })
+      .then(response => response.json()).then(result => {
+        if (result.enabled && typeof result.token === 'string') setOnline({ locale, token: result.token });
+      }).catch(() => {});
+    return () => controller.abort();
+  }, [locale]);
   const selected = quoteOptions.find((p) => p.id === product);
   const requestedVariant = ipaVariants.find(
     (v) => v.id === params.get('variant'),
@@ -59,14 +72,14 @@ export function RFQForm() {
       productName: selected?.name || product,
     };
     try {
-      if (market.rfq.endpoint) {
-        const result = await fetch(market.rfq.endpoint, {
+      if (onlineEnabled && online) {
+        const result = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ ...data, locale, token: online.token }),
         });
-        if (!result.ok) throw new Error('Request failed');
         const ack = await result.json();
+        if (!result.ok) throw new Error(typeof ack.code === 'string' ? ack.code : 'send');
         if (
           !ack ||
           typeof ack !== 'object' ||
@@ -75,7 +88,8 @@ export function RFQForm() {
         )
           throw new Error('No acknowledgement');
         setStatus(
-          en ? 'Your request has been received.' : 'Az ajánlatkérést fogadtuk.',
+          (en ? 'Thank you for your enquiry! Your message has been successfully submitted.' : 'Köszönjük megkeresését! Üzenetét sikeresen továbbítottuk munkatársainknak.') +
+          (ack.confirmationSent === false ? (en ? ' The confirmation email could not be confirmed; please do not submit again.' : ' A visszaigazoló e-mail küldése nem igazolható; kérjük, ne küldje be újra az űrlapot.') : ''),
         );
       } else {
         const body = Object.entries(data)
@@ -88,7 +102,7 @@ export function RFQForm() {
         );
         if (company.email)
           setMail(
-            `mailto:${company.email}?subject=${encodeURIComponent(`RFQ — ${selected?.name || 'Chemical supply'}`)}&body=${encodeURIComponent(body)}`,
+            `mailto:${recipient}?subject=${encodeURIComponent(`RFQ — ${selected?.name || 'Chemical supply'}`)}&body=${encodeURIComponent(body)}`,
           );
         setStatus(
           en
@@ -99,11 +113,15 @@ export function RFQForm() {
             : 'Az ajánlatkérés elkészült, de még nincs elküldve. Töltse le, vagy nyissa meg levelezőjében az elküldéshez.',
         );
       }
-    } catch {
-      setStatus(
+    } catch (error) {
+      const code = error instanceof Error ? error.message : '';
+      if (code === 'rate') setStatus(en ? 'Too many requests. Please wait an hour or contact us by email.' : 'Túl sok beküldés történt. Kérjük, várjon egy órát, vagy keressen minket e-mailben.');
+      else if (code === 'expired') setStatus(en ? 'The form session has expired or is not ready. Please reload the page before submitting.' : 'Az űrlap munkamenete lejárt vagy még nem áll készen. Kérjük, töltse újra az oldalt a beküldés előtt.');
+      else if (code === 'invalid') setStatus(en ? 'Please check the required fields and email address.' : 'Kérjük, ellenőrizze a kötelező mezőket és az e-mail-címet.');
+      else setStatus(
         en
-          ? 'The request could not be sent. Your details remain in the form; please try again.'
-          : 'Nem sikerült elküldeni. Az adatok megmaradtak az űrlapon; próbálja újra.',
+          ? 'Sending could not be confirmed. Your details remain in the form. Please contact us if the issue persists; repeated submissions may be temporarily blocked.'
+          : 'A küldést nem sikerült igazolni. Az adatok megmaradtak az űrlapon. Tartós hiba esetén keressen minket e-mailben; az ismételt beküldés átmenetileg korlátozott lehet.',
       );
     } finally {
       setBusy(false);
@@ -145,6 +163,7 @@ export function RFQForm() {
       }}
       className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-9"
     >
+      <input name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: 'none' }} />
       <p className="eyebrow">B2B / RFQ</p>
       <h2 className="mt-2 mb-8 text-3xl font-bold">
         {en ? 'Request a quote' : 'Kérjen egyedi ajánlatot'}
@@ -275,7 +294,7 @@ export function RFQForm() {
           {en ? 'Privacy information' : 'Adatkezelési információk'}
         </LocaleLink>
       </p>
-      {!market.rfq.endpoint && (
+      {!onlineEnabled && (
         <p className="mt-3 text-xs text-slate-500">
           {en
             ? 'Online submission is not yet enabled. You can prepare and download your enquiry here.'
@@ -289,7 +308,7 @@ export function RFQForm() {
             : 'Küldés…'
           : en
             ? 'REQUEST A QUOTE'
-            : 'Ajánlatkérés elkészítése'}
+            : onlineEnabled ? 'Ajánlatkérés elküldése' : 'Ajánlatkérés elkészítése'}
       </button>
       {status && (
         <div
