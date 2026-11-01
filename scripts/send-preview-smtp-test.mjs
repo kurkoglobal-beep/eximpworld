@@ -28,12 +28,17 @@ try {
     // Persistent test-only latch: even an uncertain SMTP result must not cause a duplicate.
     const key = `eximp-contact:preview:smtp-test:2026-11-01:${test.locale}`;
     if (await db.set(key, 'attempted', { NX: true }) !== 'OK') {
-      console.log('[smtp-delivery-test]', JSON.stringify({ locale: test.locale, skippedAlreadyAttempted: true })); continue;
+      console.log('[smtp-delivery-test]', JSON.stringify({ locale: test.locale, skippedAlreadyAttempted: true }));
+      throw Error('already_attempted_no_resend');
     }
     const response = await transport.sendMail({ from: 'info@eximpworld.hu', to: test.to, replyTo: test.to, subject: test.subject, text: test.text });
     const accepted = response.accepted.some(address => String(address).toLowerCase() === test.to);
-    console.log('[smtp-delivery-test]', JSON.stringify({ locale: test.locale, smtpAccepted: accepted, mailboxDeliveryVerified: false }));
-    if (!accepted) throw Error('not_accepted');
+    // Only protocol status codes are persisted/logged, never raw server text or credentials.
+    const smtpCode = Number(/^([0-9]{3})(?:[ -]|$)/.exec(response.response || '')?.[1] || 0);
+    const receipt = { locale: test.locale, smtpAccepted: accepted, smtpCode, mailboxDeliveryVerified: false };
+    await db.set(`${key}:receipt`, JSON.stringify(receipt));
+    console.log('[smtp-delivery-test]', JSON.stringify(receipt));
+    if (!accepted || smtpCode !== 250) throw Error('not_accepted');
   }
 } catch {
   console.error('[smtp-delivery-test] failed_or_uncertain_no_automatic_retry'); process.exitCode = 1;
