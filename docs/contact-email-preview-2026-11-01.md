@@ -119,3 +119,16 @@ Feladó mindkettőnél: `info@eximpworld.hu`. Levélenként egy címzett, CC/BCC
 - EN címzett és Reply-To: `eximpworldltd@eximpworld.hu`. Tárgy: `[TEST – Preview] EximpWorld SMTP delivery test`. Szöveg: „This is a one-time, approved technical test from Vercel Preview. This is not a customer enquiry. Please confirm receipt. Test ID: preview-smtp-2026-11-01-en.”
 
 A kézbesítési tesztszkript szintaktikai ellenőrzése sikeres. Nem futtattuk. Az SMTP-elfogadás után a postafiókokban külön ellenőrizni kell a beérkezést; addig nem állítunk sikeres kézbesítést.
+
+## Jóváhagyott egyszeri kézbesítési teszt – SMTP-elfogadás
+
+A felhasználó külön jóváhagyta az egy magyar és egy angol tesztlevél küldését. A `cc0710fc1774ad4d9257bf879087f529585583b4` commit Preview buildje futtatta a kontrollált szkriptet; a Vercel sikeres állapotot jelzett (deployment `7471085416`, [build](https://vercel.com/kurkoglobal-beeps-projects/eximpworld/GzGr9jiAxvpFjCoyq6wtj2ohDNis)). A build csak akkor haladhatott tovább, ha mindkét címzett szerepelt az SMTP által elfogadott címzettek között és mindkét végső SMTP-válasz kódja 250 volt. A korábban megkísérelt küldés nem ismétlődik meg, és nem minősül sikeres új próbának.
+
+| Teszt | Címzett | Feladó | SMTP-eredmény |
+| --- | --- | --- | --- |
+| Magyar | info@eximpworld.hu | info@eximpworld.hu | Elfogadva, 250 |
+| Angol | eximpworldltd@eximpworld.hu | info@eximpworld.hu | Elfogadva, 250 |
+
+A protokoll-válaszkódot és a nyelvenkénti elfogadási eredményt a teszt a Vercel buildnaplóba, valamint a Preview Redis tesztkulcsok `:receipt` metaadataiba írta. Nyers szerverválaszt, URL-t, jelszót vagy titkos adatot nem naplózott. A jelen ellenőrzés a sikeres, a fenti feltételeket kötelezően érvényesítő buildállapoton alapul; a teljes nyers SMTP-válasz szövegét nem olvastuk ki.
+
+A nyilvános űrlapok kikapcsolt állapota a teszt előfeltétele volt. Környezeti változókat és Productiont nem módosítottunk. Az egyszeri automatikus küldési buildhívást és annak indítószkriptjét eltávolítottuk; az ismétlésvédelmi Redis-jelölések megmaradnak. A tesztlevelek postaládába érkezését nem ellenőriztük; az SMTP 250 elfogadás nem azonos a beérkezés igazolásával.
