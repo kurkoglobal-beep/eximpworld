@@ -94,3 +94,11 @@ A meglévő `redis` (node-redis) kliens közvetlen TLS-es Redis-kapcsolatot hasz
 A `CONTACT_EMAIL_ENABLED` és `CONTACT_DELIVERY_VERIFIED` aktiválási feltétele változatlan; nem állítottuk őket `true` értékre. SMTP és weboldali megjelenés változatlan. Vercel környezeti változót nem olvastunk ki vagy módosítottunk, valódi Redis/SMTP-kapcsolatot nem teszteltünk ebben a lépésben.
 
 Ellenőrzés: 17/17 szimulált teszt sikeres; a Next.js build (TypeScript-ellenőrzéssel együtt) és a `git diff --check` sikeres. Az új tesztek lefedik az elsőbbséget, az üres/hiányzó elsődleges változó tartalékát, a hibás és TLS nélküli URL-ek elutasítását, valamint a kikapcsolt küldési kapcsolók megőrzését.
+
+## Valós Redis-próba a Vercel Preview buildkörnyezetében
+
+A `1dcd6dcf539545b849a0504437332a3a211a05d0` commit Preview buildjébe egyszeri ellenőrzés került (`scripts/check-preview-redis.mjs`). A Vercel sikeres állapotot adott: deployment `7471004826`, [Vercel ellenőrzés](https://vercel.com/kurkoglobal-beeps-projects/eximpworld/6tjtpxdNjym9rU9Yj8784C1PRjVU).
+
+A build előtt futó ellenőrzés hiba esetén megállította volna a buildet. Ellenőrzései: `REDIS_URL` jelenléte, `rediss://` protokoll, mindkét e-mail-kapcsoló inaktív állapota, node-redis kapcsolódás, véletlen tesztkulcs SET NX EX 60, GET értékegyezés, DEL és törlés utáni GET null. A tesztkulcs biztonsági lejárata 60 másodperc. A napló csak logikai eredményeket tartalmaz, URL-t, hitelesítést vagy kulcsértéket nem.
+
+Ez valódi Redis I/O-próba a Preview **buildkörnyezetében**, nem külön serverless futásidejű vagy SMTP-kézbesítési teszt. Productionhoz és környezeti változókhoz nem nyúltunk. A sikeres próbát követően az egyszeri automatikus buildhívás eltávolításra került; a tesztszkript megmarad kézi, Preview-környezetben történő használatra.
