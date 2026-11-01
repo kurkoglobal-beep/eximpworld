@@ -84,3 +84,13 @@ A felhasználó a cPanel alapján megadta: `SMTP_HOST=mail.eximpworld.hu`, `SMTP
 A jelszó továbbra is hiányzik, később a Vercel környezeti változóiban kerül megadásra. Ebben a lépésben Vercel környezeti változót nem módosítottunk, SMTP-kapcsolatot nem indítottunk. A Redis-elérhetőség, token-titok és a kézbesítési ellenőrzés még szükséges. A korábbi táblázat SMTP-szerverre vonatkozó nyitott kérdése ezzel lezárult.
 
 Új tesztek: `tests/contact/configuration.test.mjs` – jóváhagyott alapértékek, explicit 465/TLS konfiguráció, hiányos hitelesítés és ellentmondó TLS/illetéktelen feladó elutasítása. Futtatás: `node --test tests/contact/*.test.mjs`.
+
+## Upstash Preview-integráció – REDIS_URL támogatás
+
+A felhasználó létrehozta az Upstash Free adatbázist Frankfurtban és a Vercel projekt Preview környezetéhez kapcsolta. A szerver elsőként a nem üres `CONTACT_REDIS_URL`, ennek hiányában a `REDIS_URL` értékét használja. Mindkét forrásnál kizárólag érvényes, hosttal rendelkező `rediss://` URL fogadható el. Hibás elsődleges értéket nem fed el a tartalék változó.
+
+A meglévő `redis` (node-redis) kliens közvetlen TLS-es Redis-kapcsolatot használ, amelyet az [Upstash hivatalos node-redis dokumentációja](https://upstash.com/docs/redis/search/adapters/node-redis) támogat. REST URL vagy REST token nem helyettesíti a `rediss://` kapcsolati URL-t; klienscsere nem szükséges.
+
+A `CONTACT_EMAIL_ENABLED` és `CONTACT_DELIVERY_VERIFIED` aktiválási feltétele változatlan; nem állítottuk őket `true` értékre. SMTP és weboldali megjelenés változatlan. Vercel környezeti változót nem olvastunk ki vagy módosítottunk, valódi Redis/SMTP-kapcsolatot nem teszteltünk ebben a lépésben.
+
+Ellenőrzés: 17/17 szimulált teszt sikeres; a Next.js build (TypeScript-ellenőrzéssel együtt) és a `git diff --check` sikeres. Az új tesztek lefedik az elsőbbséget, az üres/hiányzó elsődleges változó tartalékát, a hibás és TLS nélküli URL-ek elutasítását, valamint a kikapcsolt küldési kapcsolók megőrzését.

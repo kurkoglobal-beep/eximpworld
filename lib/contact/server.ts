@@ -4,6 +4,10 @@ import type { Store, Mail } from './core';
 
 export function configuration(e: NodeJS.ProcessEnv = process.env) {
   if (e.CONTACT_EMAIL_ENABLED !== 'true' || e.CONTACT_DELIVERY_VERIFIED !== 'true') return null;
+  const redisURL = e.CONTACT_REDIS_URL || e.REDIS_URL;
+  try {
+    if (!redisURL || !redisURL.startsWith('rediss://') || !new URL(redisURL).hostname) return null;
+  } catch { return null; }
   const host = e.SMTP_HOST || 'mail.eximpworld.hu';
   const port = e.SMTP_PORT || '465';
   const secure = e.SMTP_SECURE ?? 'true';
@@ -11,8 +15,8 @@ export function configuration(e: NodeJS.ProcessEnv = process.env) {
   const from = e.SMTP_FROM || 'info@eximpworld.hu';
   // Reject contradictory TLS settings rather than silently downgrading.
   if ((port === '465' && secure !== 'true') || (port === '587' && secure !== 'false')) return null;
-  if (!host || !['465', '587'].includes(port) || !e.SMTP_PASSWORD || user !== 'info@eximpworld.hu' || from !== 'info@eximpworld.hu' || !e.CONTACT_TOKEN_SECRET || e.CONTACT_TOKEN_SECRET.length < 32 || !e.CONTACT_REDIS_URL?.startsWith('rediss://')) return null;
-  return { host, port: Number(port), secure: secure === 'true', user, pass: e.SMTP_PASSWORD, from, secret: e.CONTACT_TOKEN_SECRET, redis: e.CONTACT_REDIS_URL };
+  if (!host || !['465', '587'].includes(port) || !e.SMTP_PASSWORD || user !== 'info@eximpworld.hu' || from !== 'info@eximpworld.hu' || !e.CONTACT_TOKEN_SECRET || e.CONTACT_TOKEN_SECRET.length < 32) return null;
+  return { host, port: Number(port), secure: secure === 'true', user, pass: e.SMTP_PASSWORD, from, secret: e.CONTACT_TOKEN_SECRET, redis: redisURL };
 }
 let connection: ReturnType<typeof createClient> | undefined;
 let connecting: Promise<unknown> | undefined;
