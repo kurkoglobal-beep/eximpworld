@@ -132,3 +132,7 @@ A felhasználó külön jóváhagyta az egy magyar és egy angol tesztlevél kü
 A protokoll-válaszkódot és a nyelvenkénti elfogadási eredményt a teszt a Vercel buildnaplóba, valamint a Preview Redis tesztkulcsok `:receipt` metaadataiba írta. Nyers szerverválaszt, URL-t, jelszót vagy titkos adatot nem naplózott. A jelen ellenőrzés a sikeres, a fenti feltételeket kötelezően érvényesítő buildállapoton alapul; a teljes nyers SMTP-válasz szövegét nem olvastuk ki.
 
 A nyilvános űrlapok kikapcsolt állapota a teszt előfeltétele volt. Környezeti változókat és Productiont nem módosítottunk. Az egyszeri automatikus küldési buildhívást és annak indítószkriptjét eltávolítottuk; az ismétlésvédelmi Redis-jelölések megmaradnak. A tesztlevelek postaládába érkezését nem ellenőriztük; az SMTP 250 elfogadás nem azonos a beérkezés igazolásával.
+
+## Preview űrlapok aktiválásának előkészítése
+
+A felhasználó megerősítette mindkét tesztlevél beérkezését és engedélyezte a Preview űrlapok aktiválását. A Vercel felületén `CONTACT_DELIVERY_VERIFIED=true` és `CONTACT_EMAIL_ENABLED=true` új konfigurációs változók kerültek mentésre, kizárólag **Preview** hatókörrel (Production és Development nincs kijelölve). A `REDIS_URL`, `SMTP_PASSWORD` és `CONTACT_TOKEN_SECRET` Preview változók jelenléte a felületen ellenőrizve; titkos értékeket nem fedtünk fel. Az új commit kizárólag Preview újratelepítést indít. Automatikus tesztüzenetet nem küldünk.
